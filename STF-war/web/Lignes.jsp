@@ -43,7 +43,7 @@
         <button><a href="Lignes_Modifier.jsp">Modifier ligne</a></button>
         </div>
         <div class ="lignesbtn">
-            <input type="submit" value="Modifier"/><input type="hidden" name="action" value="DefileRechercher">
+            <input type="submit" value="Modifier"/><input type="hidden" name="action" value="test">
             <br>
             <input type="submit" value="Supprimer"/><input type="hidden" name="action" value="DefileRechercher">
         </div>
