@@ -5,9 +5,11 @@
  */
 package package_session;
 
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import package_entite.Gare;
+import package_entite.Ligne;
 import package_facades.AdministrateurFacadeLocal;
 import package_facades.GareFacadeLocal;
 import package_facades.HoraireFacadeLocal;
@@ -59,6 +61,21 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     @Override
     public void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares) {
         ligneFacade.ModifierLigne(id, num, gareDepart, gareArrivee, nbGares);
+    }
+
+    @Override
+    public void CreerHoraire(Date date, Gare gare, Ligne ligne) {
+        horaireFacade.CreerHoraire(date, ligne, gare);
+    }
+
+    @Override
+    public void ModifierHoraire(long id, Date date, Ligne ligne, Gare gare) {
+        horaireFacade.ModifierHoriaire(id, date, ligne, gare);
+    }
+
+    @Override
+    public void SupprimerHoraire(long id) {
+        horaireFacade.SupprimerHoraire(id);
     }
     
 }
