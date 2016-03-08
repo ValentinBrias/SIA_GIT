@@ -14,7 +14,7 @@
     </head>
     <body>   
         <ul>
-            <li><a href="GareCreer.jsp">Page d'accueil</a></li>
+            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
             <li><a href="Lignes.jsp">Lignes</a></li>
             <li><a href="Servlet_STF?action=AfficherGares">Gares</a></li>
             <li><a href="Abonnements.jsp">Abonnements</a></li>
