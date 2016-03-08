@@ -9,19 +9,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:useBean id="listel
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Ligne</title>
         <link rel="stylesheet" href="css/style.css" />
-        <title>Lignes</title>
     </head>
-    <body>
-        <ul id="navigation">
-            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
-            <li><a href="Lignes.jsp">Lignes</a></li>
-            <li><a href="Gares.jsp">Gares</a></li>
-            <li><a href="Abonnements.jsp">Abonnements</a></li>
-        </ul>
-        <br><br>
+    <body>   
+        <%@ include file="Navigation.jsp" %>
         <h1>Lignes > Ajouter</h1>
         <br><br>
         <form method="get" action="Servlet_STF">

@@ -13,13 +13,7 @@
         <title>Lignes</title>
     </head>
     <body>
-        <ul id="navigation">
-            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
-            <li><a href="Lignes.jsp">Lignes</a></li>
-            <li><a href="Gares.jsp">Gares</a></li>
-            <li><a href="Abonnements.jsp">Abonnements</a></li>
-        </ul>
-        <br><br>
+        <%@ include file="Navigation.jsp" %>
         <h1>Lignes > Modifier</h1>
         <br><br>
         <form method="get" action="Servlet_STF">

@@ -13,13 +13,7 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>   
-        <ul id="navigation">
-            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
-            <li><a href="Servlet_STF?action=AfficherLignes">Lignes</a></li>
-            <li><a href="Servlet_STF?action=AfficherGares">Gares</a></li>
-            <li><a href="Abonnements.jsp">Abonnements</a></li>
-        </ul>
-        <br><br>
+        <%@ include file="Navigation.jsp" %>
         <h1 align="center"> Bienvenue sur STF </h1>
         <br><br>
     </body>

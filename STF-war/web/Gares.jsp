@@ -15,13 +15,7 @@
         <title>Gares</title>
     </head>
     <body>
-        <ul>
-            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
-            <li><a href="Lignes.jsp">Lignes</a></li>
-            <li><a href="Gares.jsp">Gares</a></li>
-            <li><a href="Abonnements.jsp">Abonnements</a></li>
-        </ul>
-        <br><br>
+        <%@ include file="Navigation.jsp" %>
         <h1>Gares</h1>
         <br><br>
         <h2 align='center'>Liste des gares</h2>
