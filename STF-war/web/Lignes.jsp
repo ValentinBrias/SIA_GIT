@@ -45,7 +45,7 @@
         <div class ="lignesbtn">
             <input type="submit" value="Modifier"/><input type="hidden" name="action" value="DefileRechercher">
             <br>
-            <input type="submit" value="Supprimer"/><input type="hidden" name="action" value="DefileRechercher">
+            <input type="submit" value="Supprimer"/><input type="hidden" name="action" value="toast">
         </div>
     </body>
 </html>
