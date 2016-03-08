@@ -84,6 +84,7 @@ public class Gare implements Serializable {
     }
     @OneToMany(mappedBy = "gareDepart")
     private List<Trajet> lesTrajetsDepart;
+    
     @ManyToMany(mappedBy = "lesGares")
     private List<Ligne> lesLignes;
 

@@ -22,8 +22,6 @@ import javax.persistence.OneToMany;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Type_Paiement implements Serializable {
-    @OneToMany(mappedBy = "leTypePaiement")
-    private List<Facture> lesFactures;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
