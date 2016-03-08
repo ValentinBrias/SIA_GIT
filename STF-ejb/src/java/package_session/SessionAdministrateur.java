@@ -58,7 +58,7 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
 
     @Override
     public void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares) {
-        ligneFacade.ModifierGare(id, num, gareDepart, gareArrivee, nbGares);
+        ligneFacade.ModifierLigne(id, num, gareDepart, gareArrivee, nbGares);
     }
     
 }
