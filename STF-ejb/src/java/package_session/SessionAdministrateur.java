@@ -6,11 +6,12 @@
 package package_session;
 
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import package_entite.Gare;
+import package_entite.Horaire;
 import package_entite.Ligne;
-import package_facades.AdministrateurFacadeLocal;
 import package_facades.GareFacadeLocal;
 import package_facades.HoraireFacadeLocal;
 import package_facades.LigneFacadeLocal;
@@ -27,8 +28,7 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     private HoraireFacadeLocal horaireFacade;
     @EJB
     private GareFacadeLocal gareFacade;
-    @EJB
-    private AdministrateurFacadeLocal administrateurFacade;
+
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -76,6 +76,24 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     @Override
     public void SupprimerHoraire(long id) {
         horaireFacade.SupprimerHoraire(id);
+    }
+
+    @Override
+    public List<Gare> RetournerGares() {
+        List<Gare> list = gareFacade.RetournerGares();
+        return list;
+    }
+
+    @Override
+    public List<Ligne> RetournerLignes() {
+        List<Ligne> list = ligneFacade.RetournerLignes();
+        return list;
+    }
+
+    @Override
+    public List<Horaire> RetournerHoraires() {
+        List<Horaire> list = horaireFacade.RetournerHoraires();
+        return list;
     }
     
 }

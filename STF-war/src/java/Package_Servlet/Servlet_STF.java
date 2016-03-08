@@ -6,12 +6,17 @@
 package Package_Servlet;
 
 import java.io.IOException;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import package_entite.Gare;
+import package_entite.Ligne;
+import package_session.SessionAdministrateurLocal;
 
 /**
  *
@@ -19,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Servlet_STF", urlPatterns = {"/Servlet_STF"})
 public class Servlet_STF extends HttpServlet {
+    @EJB
+    private SessionAdministrateurLocal sessionAdministrateur;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,7 +53,8 @@ public class Servlet_STF extends HttpServlet {
             else if (act.equals("MenuPrincipal")) {
                 jspClient = "/MenuPrincipal.jsp";
                 //request.setAttribute("message", "");
-            /*} else if (act.equals("MenuAuthentifier")) {
+            }    
+            /* else if (act.equals("MenuAuthentifier")) {
                 int i;
                 i = doActionAuthentifier(request, response);
                 if (i == 1) {
@@ -57,8 +65,24 @@ public class Servlet_STF extends HttpServlet {
                     jspClient = "/MenuOrganisateur.jsp";
                 } else if (i == 4) {
                     jspClient = "/Authentifier.jsp";
-                }*/
-            } 
+                }
+            */ 
+            
+            else if (act.equals("AfficherLignes")) {
+                jspClient = "/Lignes.jsp";
+                List<Ligne> list = sessionAdministrateur.RetournerLignes();
+                request.setAttribute("listelignes", list);
+                request.setAttribute("message", "Liste des lignes");
+            }
+            else if (act.equals("AfficherGares")) {
+                jspClient = "/Gares.jsp";
+                List<Gare> list = sessionAdministrateur.RetournerGares();
+                request.setAttribute("listegares", list);
+                request.setAttribute("message", "Liste des gares");
+            } else if (act.equals("GareAjouter")) {
+                jspClient = "/Gares.jsp";
+                doActionCreationGare(request, response);
+            }
             
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -143,4 +167,22 @@ public class Servlet_STF extends HttpServlet {
         } 
         return i;
     }*/
+    
+    protected void doActionCreationGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nom = request.getParameter("nom");
+        String adresse = request.getParameter("adresse");
+        String message;
+
+        if (nom.trim().isEmpty() || adresse.trim().isEmpty()) {
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires."
+                    + "<br/><a href=\"GareCreer.jsp\">Cliquez ici</a> pour accéder au formulaire de création de gare.";
+        } else {
+
+            sessionAdministrateur.CreerGare(nom, adresse);
+            message = "La gare est créée avec succès !";
+        }
+        request.setAttribute("message", message);
+        List<Gare> list = sessionAdministrateur.RetournerGares();
+        request.setAttribute("listegares", list);
+    }
 }

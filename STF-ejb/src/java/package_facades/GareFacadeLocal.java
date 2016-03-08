@@ -37,5 +37,7 @@ public interface GareFacadeLocal {
     Gare RechercherGareParId(long id);
 
     void SupprimerGare(long id);
+
+    List<Gare> RetournerGares();
     
 }

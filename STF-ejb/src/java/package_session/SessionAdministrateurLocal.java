@@ -6,8 +6,10 @@
 package package_session;
 
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Local;
 import package_entite.Gare;
+import package_entite.Horaire;
 import package_entite.Ligne;
 
 /**
@@ -34,5 +36,11 @@ public interface SessionAdministrateurLocal {
     void ModifierHoraire(long id, Date date, Ligne ligne, Gare gare);
 
     void SupprimerHoraire(long id);
+
+    List<Gare> RetournerGares();
+
+    List<Ligne> RetournerLignes();
+
+    List<Horaire> RetournerHoraires();
     
 }
