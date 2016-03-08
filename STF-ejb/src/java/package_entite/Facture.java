@@ -1,0 +1,121 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package package_entite;
+
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+/**
+ *
+ * @author 3092790
+ */
+@Entity
+public class Facture implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Facture)) {
+            return false;
+        }
+        Facture other = (Facture) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "package_entite.Facture[ id=" + id + " ]";
+    }
+    
+    private double montant;
+
+    /**
+     * Get the value of montant
+     *
+     * @return the value of montant
+     */
+    public double getMontant() {
+        return montant;
+    }
+
+    /**
+     * Set the value of montant
+     *
+     * @param montant new value of montant
+     */
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
+
+    @ManyToOne
+        private Type_Paiement leTypePaiement;
+
+    /**
+     * Get the value of leTypePaiement
+     *
+     * @return the value of leTypePaiement
+     */
+    public Type_Paiement getLeTypePaiement() {
+        return leTypePaiement;
+    }
+
+    /**
+     * Set the value of leTypePaiement
+     *
+     * @param leTypePaiement new value of leTypePaiement
+     */
+    public void setLeTypePaiement(Type_Paiement leTypePaiement) {
+        this.leTypePaiement = leTypePaiement;
+    }
+
+    @ManyToOne
+    private Client leClient;
+
+    /**
+     * Get the value of leClient
+     *
+     * @return the value of leClient
+     */
+    public Client getLeClient() {
+        return leClient;
+    }
+
+    /**
+     * Set the value of leClient
+     *
+     * @param leClient new value of leClient
+     */
+    public void setLeClient(Client leClient) {
+        this.leClient = leClient;
+    }
+
+}
