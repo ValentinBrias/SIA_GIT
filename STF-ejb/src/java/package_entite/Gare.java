@@ -29,6 +29,27 @@ public class Gare implements Serializable {
     public List<Ligne> getLesLignesArrivee() {
         return lesLignesArrivee;
     }
+    @OneToMany(mappedBy = "laGare")
+    private List<Horaire> lesHoraires;
+
+    /**
+     * Get the value of lesHoraires
+     *
+     * @return the value of lesHoraires
+     */
+    public List<Horaire> getLesHoraires() {
+        return lesHoraires;
+    }
+
+    /**
+     * Set the value of lesHoraires
+     *
+     * @param lesHoraires new value of lesHoraires
+     */
+    public void setLesHoraires(List<Horaire> lesHoraires) {
+        this.lesHoraires = lesHoraires;
+    }
+
 
     public void setLesLignesArrivee(List<Ligne> lesLignesArrivee) {
         this.lesLignesArrivee = lesLignesArrivee;
@@ -143,17 +164,6 @@ public class Gare implements Serializable {
         this.adresse = adresse;
     }
 
-    @ManyToOne
-    private List<Horaire> lesHoraires;
 
-    
-    public List<Horaire> getLesHoraires() {
-        return lesHoraires;
-    }
-
-    
-    public void setLesHoraires(List<Horaire> lesHoraires) {
-        this.lesHoraires = lesHoraires;
-    }
 
 }

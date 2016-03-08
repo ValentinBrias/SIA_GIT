@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Horaire implements Serializable {
-    @OneToMany(mappedBy = "lesHoraires")
+    @ManyToOne
     private Gare laGare;
 
     public Gare getLaGare() {
@@ -31,6 +31,7 @@ public class Horaire implements Serializable {
     public void setLaGare(Gare laGare) {
         this.laGare = laGare;
     }
+    
     @ManyToOne
     private Ligne laLigne;
 
