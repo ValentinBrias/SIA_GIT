@@ -1,47 +1,11 @@
 /* Stylesheet / CSS */
 
-/* Body */
-.h1
-{
-    margin-left:10%;
-}
-
-
-/* Menu */
-#navigation {
-    padding:0;
-    margin:0 auto;/*centrage marges automatiques*/
-    margin-top:10%;
-    text-align:center;/*centre les inline qu'il contient*/
-    list-style-type:none;
-}
-
-#navigation li {
-    background: #fff ;
-    color: #000000;
-    border: 1px solid #600 ;
-    margin-bottom: 1px ;
-    display:inline-block;/*de list-item à inline et en block pour pouvoir modifier la taille*/
-    width:200px;
-    padding:10px;
-}
-
- 
 /* Lignes */
 .lignesbtn 
 {
-    width:100px;
-    float: right;
-    margin-right:10%;
+    width:50px;
     color:black;
+    border-style:ridge;
     border-width:2px;
-}
-
-.lignesbtn_ajouter
-{
-    width:100px;
-    float: left;
-    margin-left:10%;
-    color:black;
-    border-width:2px;
+    border-color:blue;
 }
