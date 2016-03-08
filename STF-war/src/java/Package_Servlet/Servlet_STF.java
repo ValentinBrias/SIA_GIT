@@ -39,7 +39,11 @@ public class Servlet_STF extends HttpServlet {
             if ((act == null) || (act.equals("null"))) {
                 jspClient = "/MenuPrincipal.jsp";
                 //jspClient = "/Authentification.jsp";
-            } else if (act.equals("MenuPrincipal")) {
+            } else if (act.equals("LigneAjouter")) {
+                jspClient = "/MenuPrincipal.jsp";
+                //request.setAttribute("message", "");
+            }
+            else if (act.equals("MenuPrincipal")) {
                 jspClient = "/MenuPrincipal.jsp";
                 //request.setAttribute("message", "");
             /*} else if (act.equals("MenuAuthentifier")) {
