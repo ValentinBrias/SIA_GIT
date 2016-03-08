@@ -5,6 +5,7 @@
  */
 package package_facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -74,6 +75,16 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
         req = req.setParameter("num", num);
         l = (Ligne) req.getSingleResult();
         return l;
+    }
+
+    @Override
+    public List<Ligne> RetournerLignes() {
+        List<Ligne> listeL;
+        Ligne l = null;
+        String txt = "SELECT l FROM Ligne as l";
+        Query req = getEntityManager().createQuery(txt);
+        listeL = req.getResultList();
+        return listeL;
     }
     
 }

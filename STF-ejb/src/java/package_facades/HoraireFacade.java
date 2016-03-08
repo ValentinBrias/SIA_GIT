@@ -6,6 +6,7 @@
 package package_facades;
 
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -64,6 +65,16 @@ public class HoraireFacade extends AbstractFacade<Horaire> implements HoraireFac
     public void SupprimerHoraire(long id) {
         Horaire h = RechercherHoraireParId(id);
         em.remove(h);
+    }
+
+    @Override
+    public List<Horaire> RetournerHoraires() {
+        List<Horaire> listeH;
+        Horaire h = null;
+        String txt = "SELECT h FROM Horaire as h";
+        Query req = getEntityManager().createQuery(txt);
+        listeH = req.getResultList();
+        return listeH;
     }
     
 }

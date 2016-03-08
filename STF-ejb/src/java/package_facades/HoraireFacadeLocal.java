@@ -40,5 +40,7 @@ public interface HoraireFacadeLocal {
     void ModifierHoriaire(long id, Date date, Ligne ligne, Gare gare);
 
     void SupprimerHoraire(long id);
+
+    List<Horaire> RetournerHoraires();
     
 }

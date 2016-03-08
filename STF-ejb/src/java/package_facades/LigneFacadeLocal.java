@@ -40,5 +40,7 @@ public interface LigneFacadeLocal {
     void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares);
 
     Ligne RechercherLigneParNum(int num);
+
+    List<Ligne> RetournerLignes();
     
 }
