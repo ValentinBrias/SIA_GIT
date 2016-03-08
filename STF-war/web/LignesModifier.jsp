@@ -39,12 +39,14 @@
                 <tr>
                     <td>Prix de l'assurance</td><td><%=Ligne.getPrixAssurance()%></td><td><input type="text" name="prixassu" placeholder="nouveau prix d'assurance"/></td>
                 </tr>
+            </table>
+            <br>
+            <br>
+            <div class ="lignesbtn">
+                <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="Enregistrer">
+            </div>
+        </form>
                 
-                <br>
-                <br>
-                <div class ="lignesbtn">
-                    <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="Enregistrer">
-                </div>
     </body>
     
 </html>
