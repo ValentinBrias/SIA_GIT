@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Lignes
-    Created on : 7 mars 2016, 15:51:24
+    Document   : LignesSupprimer
+    Created on : 8 mars 2016, 14:09:54
     Author     : 3099709
 --%>
 
@@ -20,12 +20,11 @@
             <li><a href="Abonnements.jsp">Abonnements</a></li>
         </ul>
         <br><br>
-        <h1>Lignes</h1>
+        <h1>Lignes > Supprimer</h1>
         <br><br>
-        Sélectionner une ligne <input type="text" placeholder="Rechercher une ligne" /> <input type="submit" value="Chercher"/><input type="hidden" name="action" value="DefileRechercher">
-
-
-        <br><br>
+        <div class="lignesbody">Etes-vous sûr de vouloir supprimer la ligne sélectionnée ?</div>
+        <form method="get" action="Servlet_STF">
+            <br><br>
         <TABLE align='center' border="solid black" width="80%" CELLSPACING=0 CELLPADDING=5>
             <tr BGCOLOR="#C0C0C0">
                 <th>Identifiant lignes</th>
@@ -37,17 +36,12 @@
                 <th>Sélectionner</th>
             </tr>
         </TABLE>
-        
-        <div class ="lignesbtn_ajouter">
-        <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="LigneAjouter">
-        </div>
-        <div class ="test">
-        <button><a href="Lignes_Modifier.jsp">Modifier ligne</a></button>
-        </div>
+        <br>
+        <br>
         <div class ="lignesbtn">
-            <input type="submit" value="Modifier"/><input type="hidden" name="action" value="test">
+            <input type="submit" value="Valider"/><input type="hidden" name="action" value="Valider">
             <br>
-            <input type="submit" value="Supprimer"/><input type="hidden" name="action" value="toast">
+            <input type="submit" value="Annuler"/><input type="hidden" name="action" value="Annuler">
         </div>
     </body>
 </html>

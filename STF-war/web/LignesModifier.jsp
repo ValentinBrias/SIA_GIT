@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lignes > Modifier</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Lignes</title>
     </head>
     <body>
         <ul>
@@ -19,7 +20,7 @@
             <li><a href="Abonnements.jsp">Abonnements</a></li>
         </ul>
         <br><br>
-        <h1>Lignes</h1>
+        <h1>Lignes > Modifier</h1>
         <br><br>
         <form method="get" action="Servlet_STF">
             <TABLE border ="1">
@@ -38,5 +39,12 @@
                 <tr>
                     <td>Prix de l'assurance</td><td><%=Ligne.getPrixAssurance()%></td><td><input type="text" name="prixassu" placeholder="nouveau prix d'assurance"/></td>
                 </tr>
+                
+                <br>
+                <br>
+                <div class ="lignesbtn">
+                    <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="Enregistrer">
+                </div>
     </body>
+    
 </html>
