@@ -39,7 +39,7 @@
         </TABLE>
         
         <div class ="lignesbtn_ajouter">
-        <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="DefileRechercher">
+        <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="LigneAjouter">
         <button><a href="Lignes_Modifier.jsp">Modifier ligne</a></button>
         </div>
         <div class ="lignesbtn">
