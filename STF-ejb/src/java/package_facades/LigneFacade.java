@@ -57,7 +57,7 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
     }
 
     @Override
-    public void ModifierGare(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares) {
+    public void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares) {
         Ligne ligne = RechercherLigneParId(id); 
         ligne.setNumLigne(num); 
         ligne.setGareDepart(gareDepart);

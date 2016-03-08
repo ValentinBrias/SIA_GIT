@@ -37,7 +37,7 @@ public interface LigneFacadeLocal {
 
     void SupprimerLigne(long id);
 
-    void ModifierGare(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares);
+    void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares);
 
     Ligne RechercherLigneParNum(int num);
     
