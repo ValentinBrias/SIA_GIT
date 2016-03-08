@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import package_entite.Gare;
+import package_entite.Ligne;
 import package_session.SessionAdministrateurLocal;
 
 /**
@@ -67,7 +68,18 @@ public class Servlet_STF extends HttpServlet {
                 }
             */ 
             
-            else if (act.equals("GareAjouter")) {
+            else if (act.equals("AfficherLignes")) {
+                jspClient = "/Lignes.jsp";
+                List<Ligne> list = sessionAdministrateur.RetournerLignes();
+                request.setAttribute("listelignes", list);
+                request.setAttribute("message", "Liste des lignes");
+            }
+            else if (act.equals("AfficherGares")) {
+                jspClient = "/Gares.jsp";
+                List<Gare> list = sessionAdministrateur.RetournerGares();
+                request.setAttribute("listegares", list);
+                request.setAttribute("message", "Liste des gares");
+            } else if (act.equals("GareAjouter")) {
                 jspClient = "/Gares.jsp";
                 doActionCreationGare(request, response);
             }

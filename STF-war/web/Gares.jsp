@@ -46,6 +46,6 @@
                     <td Width=15%><%=g.getAdresse()%></td>
                 </tr><%}%>
         </TABLE>
-        <a href="/GareCreer.jsp"Creer Gare</a>
+        <a href="GareCreer.jsp">Ajouter une Gare</a>
     </body>
 </html>
