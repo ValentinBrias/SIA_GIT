@@ -97,25 +97,5 @@ public class Facture implements Serializable {
         this.leTypePaiement = leTypePaiement;
     }
 
-    @ManyToOne
-    private Client leClient;
-
-    /**
-     * Get the value of leClient
-     *
-     * @return the value of leClient
-     */
-    public Client getLeClient() {
-        return leClient;
-    }
-
-    /**
-     * Set the value of leClient
-     *
-     * @param leClient new value of leClient
-     */
-    public void setLeClient(Client leClient) {
-        this.leClient = leClient;
-    }
-
+ 
 }

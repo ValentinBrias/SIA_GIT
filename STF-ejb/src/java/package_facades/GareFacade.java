@@ -5,6 +5,7 @@
  */
 package package_facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,6 +60,16 @@ public class GareFacade extends AbstractFacade<Gare> implements GareFacadeLocal 
     public void SupprimerGare(long id) {
         Gare g = RechercherGareParId(id);
         em.remove(g);
+    }
+
+    @Override
+    public List<Gare> RetournerGares() {
+        List<Gare> listeG;
+        Gare g = null;
+        String txt = "SELECT g FROM Gare as g";
+        Query req = getEntityManager().createQuery(txt);
+        listeG = req.getResultList();
+        return listeG;
     }
     
     
