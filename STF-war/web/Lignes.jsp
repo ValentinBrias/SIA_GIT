@@ -40,6 +40,7 @@
         
         <div class ="lignesbtn_ajouter">
         <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="DefileRechercher">
+        <button><a href="Lignes_Modifier.jsp">Modifier ligne</a></button>
         </div>
         <div class ="lignesbtn">
             <input type="submit" value="Modifier"/><input type="hidden" name="action" value="DefileRechercher">

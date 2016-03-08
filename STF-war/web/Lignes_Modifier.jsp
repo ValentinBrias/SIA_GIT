@@ -30,13 +30,13 @@
                     <td>Désignation</td><td><%=Ligne.getDesignation()%></td><td><input type="text" name="designation" placeholder='nouveau nom'/></td>
                 </tr>
                 <tr>
-                    <td>Prix</td><td><%=accessoire.getPrixUnitaire()%></td><td><input type="text" name="prix" placeholder='nouveau prix'/></td>
+                    <td>Prix</td><td><%=Ligne.getPrixUnitaire()%></td><td><input type="text" name="prix" placeholder='nouveau prix'/></td>
                 </tr>
                 <tr>
-                    <td>Prix de location</td><td><%=accessoire.getPrixLocation()%></td><td><input type="text" name="prixloc" placeholder='nouveau prix de location'/></td>
+                    <td>Prix de location</td><td><%=Ligne.getPrixLocation()%></td><td><input type="text" name="prixloc" placeholder='nouveau prix de location'/></td>
                 </tr>
                 <tr>
-                    <td>Prix de l'assurance</td><td><%=accessoire.getPrixAssurance()%></td><td><input type="text" name="prixassu" placeholder="nouveau prix d'assurance"/></td>
+                    <td>Prix de l'assurance</td><td><%=Ligne.getPrixAssurance()%></td><td><input type="text" name="prixassu" placeholder="nouveau prix d'assurance"/></td>
                 </tr>
     </body>
 </html>

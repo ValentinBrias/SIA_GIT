@@ -1,3 +1,8 @@
 /nbproject/private/
 /STF-ejb/nbproject/private/
 /STF-war/nbproject/private/
+/STF-ejb/build/
+/STF-war/build/
+/STF-war/dist/
+/STF-ejb/dist/
+/build/
