@@ -91,6 +91,14 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Lignes.jsp";
                 doActionAjouterLigne(request, response);
             } 
+            else if (act.equals("LigneModification")) {
+                jspClient = "/LignesModifier.jsp";
+                doActionAfficherModifLigne(request, response);
+            }
+            else if (act.equals("ModifierLigne")) {
+                jspClient = "/Lignes.jsp";
+                doActionModifierLigne(request, response);
+            }
             else if (act.equals("AfficherGares")) {
                 jspClient = "/Gares.jsp";
                 List<Gare> list = sessionAdministrateur.RetournerGares();
@@ -231,12 +239,12 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("listegares", list);
     }
     
-	protected void doActionAfficherModifGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doActionAfficherModifGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String gare = request.getParameter("modif"); //récupère l'id de la gare à modifier
         Long idgare = Long.valueOf(gare);
         Gare g = sessionAdministrateur.RechercherGareParId(idgare);
         request.setAttribute("gare", g); //envoie la gare à modifier à la JSP
-        
+
         List<Ligne> listl = sessionAdministrateur.RetournerLignes();
         request.setAttribute("listelignes", listl); //envoie la liste de toutes les lignes à la JSP
     }
@@ -329,6 +337,74 @@ public class Servlet_STF extends HttpServlet {
         List<Ligne> list = sessionAdministrateur.RetournerLignes();
         request.setAttribute("listelignes", list);
     } 
+    
+    protected void doActionAfficherModifLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String ligne = request.getParameter("IdLigne"); //récupère l'id de la ligne à modifier
+        Long idligne = Long.valueOf(ligne);
+        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+        request.setAttribute("ligne", l); //envoie la ligne à modifier à la JSP
+
+        List<Gare> listg = sessionAdministrateur.RetournerGares();
+        request.setAttribute("listegares", listg); //envoie la liste de toutes les gares à la JSP
+    }
+    
+    protected void doActionModifierLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String id = request.getParameter("idligne");
+        Long idligne = Long.valueOf(id);
+        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+        
+        String garedep = request.getParameter("GareDepart");
+        Long idgd = Long.valueOf(garedep);
+        String garearr = request.getParameter("GareArrivee");
+        Long idga = Long.valueOf(garearr);
+        String numLigne = request.getParameter("NumLigne");
+        int num = Integer.parseInt(numLigne);
+        String tabgare[] = request.getParameterValues("gares");
+        List <Gare> list = new ArrayList<Gare>();
+        
+        if (numLigne.trim().isEmpty()){
+            num = l.getNumLigne();
+        }
+        if (garedep.trim().isEmpty()){
+            garedep = l.getGareDepart().getNomGare();
+        }
+        if (garearr.trim().isEmpty()){
+            garearr = l.getGareArrivee().getNomGare();
+        }
+        if (tabgare==null){
+            list = l.getLesGares();
+        } else {
+            for (String idg:tabgare){
+                Long idgare = Long.valueOf(idg);
+                Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+                list.add(g);
+            }
+        }
+        Gare gad = sessionAdministrateur.RechercherGareParId(idgd);
+        Gare elm = sessionAdministrateur.RechercherGareParId(idga);
+        sessionAdministrateur.ModifierLigne(idligne, num, gad, elm);
+
+        String message = "<div class='msg_success'>Ligne modifiée avec succès !</div>";
+        request.setAttribute("message", message);
+
+        List<Ligne> listl = sessionAdministrateur.RetournerLignes();
+        request.setAttribute("listegares", listl);
+    }
+    
+    protected void doActionSupprimerLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String message;
+        String id = request.getParameter("IdLigne");
+        
+        Long idligne = Long.valueOf(id);
+        sessionAdministrateur.SupprimerLigne(idligne);
+        message = "<div class='msg_success'>Ligne supprimée avec succès!</div>";
+
+        request.setAttribute("message", message);
+        List<Ligne> list = sessionAdministrateur.RetournerLignes();
+        request.setAttribute("listegares", list);
+    }
+    
     protected void doActionAfficherHoraires(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("IdLigne");
         Long idligne = Long.valueOf(id); 

@@ -26,17 +26,30 @@
                     <th></th><th>Données actuelles</th><th>Nouvelles données</th>
                 </tr>
                 <tr>
-                    <td>Numéro</td><td><%=Ligne.getNumLigne()%></td><td><input type="text" name="numLigne" placeholder='nouveau numéro'/></td>
+                    <td>Numéro</td><td><%=Ligne.getNumLigne()%></td><td><input type="text" name="NumLigne" placeholder='nouveau numéro'/></td>
                 </tr>
                 <tr>
-                    <td>Gare départ</td><td><%=Ligne.getGareDepart().getNomGare()%></td><td><input type="text" name="gareDepart" placeholder='nouvelle gare de départ'/></td>
+                    <td>Gare départ</td><td><%=Ligne.getGareDepart().getNomGare()%></td>
+                    <td><select name="GareDepart">
+                            <!--Liste déroulante des gares-->
+                            <%
+                                List<Gare> lesGares = listegares;
+                                for (Gare g : lesGares) {%>
+                            <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
+                            <%}%></select></td>
                 </tr>
                 <tr>
-                    <td>Gare arrivée</td><td><%=Ligne.getGareArrivee().getNomGare()%></td><td><input type="text" name="prixloc" placeholder='nouvelle gare de départ'/></td>
+                    <td>Gare arrivée</td><td><%=Ligne.getGareArrivee().getNomGare()%></td>
+                    <td><select name="GareArrivee">
+                            <!--Liste déroulante des gares-->
+                            <%
+                            for (Gare g : lesGares) {%>
+                            <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
+                            <%}%></select></td>
                 </tr>
                 <tr><!--Liste des gares liés à la ligne-->
-                    <% List<Gare> lesGares = Ligne.getLesGares();%>
-                    <td>Gares</td><td><%for (Gare g : lesGares) {%><%=g.getNomGare()%><br><%}%></td> 
+                    <% List<Gare> lesG = Ligne.getLesGares();%>
+                    <td>Gares</td><td><%for (Gare g : lesG) {%><%=g.getNomGare()%><br><%}%></td> 
                     <td>Nouvelle lignes : *<br>
                         <%List<Gare> toutesgares = listegares;
                         for (Gare g : toutesgares) {%>

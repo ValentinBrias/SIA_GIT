@@ -29,7 +29,7 @@ public interface SessionAdministrateurLocal {
 
     void SupprimerLigne(long id);
 
-    void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, int nbGares);
+    void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee);
 
     void CreerHoraire(Date date, Gare gare, Ligne ligne);
 
