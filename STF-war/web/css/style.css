@@ -6,6 +6,12 @@
     margin-left:10%;
 }
 
+#boutonRafraichir
+{
+    width: 20px;
+    height: 20px;
+}
+
 
 /* Menu */
 #navigation {

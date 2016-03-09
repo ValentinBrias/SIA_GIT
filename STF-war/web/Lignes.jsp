@@ -29,6 +29,7 @@
                 <input type="text" name="NumLigne" placeholder="Rechercher une ligne" /> 
                 <input type="hidden" name="action" value="RechercherLigne">
                 <input type="submit" value="Rechercher"/>
+                <a href="Servlet_STF?&action=LigneRafraichir"> <img id='boutonRafraichir' src='image/LogoRafraichir.png' alt='Rafraichir le tableau'></a>
                 <%
                     String attribut = (String) request.getAttribute("message");
                     out.println(attribut);
@@ -37,6 +38,7 @@
         </div>
         
         <br><br>
+        
         
         <!-- Affichage de la liste de toutes les lignes -->
         <TABLE align='center' border="solid black" width="80%" CELLSPACING=0 CELLPADDING=5>

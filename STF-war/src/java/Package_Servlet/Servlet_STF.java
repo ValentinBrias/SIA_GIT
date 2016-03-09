@@ -79,6 +79,12 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Lignes.jsp";
                 doActionRechercherLigne(request, response);
             } 
+            else if (act.equals("LigneRafraichir")) {
+                jspClient = "/Lignes.jsp";
+                List<Ligne> list = sessionAdministrateur.RetournerLignes();
+                request.setAttribute("listelignes", list);
+                request.setAttribute("message", "");
+            } 
             else if (act.equals("AfficherGares")) {
                 jspClient = "/Gares.jsp";
                 List<Gare> list = sessionAdministrateur.RetournerGares();
