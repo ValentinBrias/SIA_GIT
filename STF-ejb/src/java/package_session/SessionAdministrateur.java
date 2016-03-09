@@ -49,8 +49,8 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     }
 
     @Override
-    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee) {
-        ligneFacade.CreerLigne(num, gareDepart, gareArrivee);
+    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, List <Gare> liste) {
+        ligneFacade.CreerLigne(num, gareDepart, gareArrivee, liste);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     }
 
     @Override
-    public void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee) {
-        ligneFacade.ModifierLigne(id, num, gareDepart, gareArrivee);
+    public void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, List<Gare> liste) {
+        ligneFacade.ModifierLigne(id, num, gareDepart, gareArrivee, liste);
     }
 
     @Override

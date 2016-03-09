@@ -19,7 +19,7 @@
         <%@ include file="Navigation.jsp" %>
         <h1 id="h1">Lignes > Ajouter</h1>
         <br><br>
-        <div class='lignestext'>
+        <div class='text'>
             <form method="get" action="Servlet_STF">
                 N° de ligne : <input type="text" name="NumLigne" placeholder="Numéro de ligne" />
                 Départ : <select name="GareDepart">
@@ -35,11 +35,17 @@
                             for (Gare g : lesGares) {%>
                 <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                 <%}%></select>
-            
+                Gare (Veuillez sélectionner au moins une gare):<br>
+                <!--Checkbox des gares (plusieurs choix possibles)-->
+                        <%
+                            for (Gare g : lesGares) {%>
+                        <input type="checkbox" name="g" value="<%=g.getId()%>"/><%=g.getNomGare()%><br>
+                        
+                        <%}%></td>
         </div>
             <br>
             <br>
-            <div class ="lignesbtn">
+            <div class ="btn_gauche">
                 <input type="hidden" name="action" value="AjouterLigne">
 
                 <input type="submit" value="Valider"/>

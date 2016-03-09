@@ -324,18 +324,24 @@ public class Servlet_STF extends HttpServlet {
         String garedep = request.getParameter("GareDepart");
         String garearr = request.getParameter("GareArrivee");
         String numLigne = request.getParameter("NumLigne");
+        String tabgare[] = request.getParameterValues("g"); // dans tabgare[] on récupère une liste d'id de gare, formats String
         String message;
 
-        if (garedep.isEmpty() || garearr.isEmpty() || numLigne.isEmpty()) {
+        if (garedep.isEmpty() || garearr.isEmpty() || numLigne.isEmpty() || tabgare==null) {
             message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
         } else {
+            List <Gare> listeG = new ArrayList<Gare>();
+            for (String id:tabgare){
+                Long idgare = Long.valueOf(id);
+                Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+            }
             int num = Integer.parseInt(numLigne);
             Long idgd = Long.valueOf(garedep);
             Long idga = Long.valueOf(garearr);
             Gare gad = sessionAdministrateur.RechercherGareParId(idgd);
             Gare elm = sessionAdministrateur.RechercherGareParId(idga);
-            sessionAdministrateur.CreerLigne(num, gad, elm);
-            message = "<div class='msg_success'>La gare est créée avec succès !</div>";
+            sessionAdministrateur.CreerLigne(num, gad, elm, listeG);
+            message = "<div class='msg_success'>La ligne est créée avec succès !</div>";
         }
         request.setAttribute("message", message);
         List<Ligne> list = sessionAdministrateur.RetournerLignes();
@@ -365,7 +371,7 @@ public class Servlet_STF extends HttpServlet {
         String numLigne = request.getParameter("NumLigne");
         int num = Integer.parseInt(numLigne);
         String tabgare[] = request.getParameterValues("gares");
-        List <Gare> list = new ArrayList<Gare>();
+        List <Gare> listeG = new ArrayList<Gare>();
         
         if (numLigne.trim().isEmpty()){
             num = l.getNumLigne();
@@ -377,23 +383,23 @@ public class Servlet_STF extends HttpServlet {
             garearr = l.getGareArrivee().getNomGare();
         }
         if (tabgare==null){
-            list = l.getLesGares();
+            listeG = l.getLesGares();
         } else {
             for (String idg:tabgare){
                 Long idgare = Long.valueOf(idg);
                 Gare g = sessionAdministrateur.RechercherGareParId(idgare);
-                list.add(g);
+                listeG.add(g);
             }
         }
         Gare gad = sessionAdministrateur.RechercherGareParId(idgd);
         Gare elm = sessionAdministrateur.RechercherGareParId(idga);
-        sessionAdministrateur.ModifierLigne(idligne, num, gad, elm);
+        sessionAdministrateur.ModifierLigne(idligne, num, gad, elm, listeG );
 
         String message = "<div class='msg_success'>Ligne modifiée avec succès !</div>";
         request.setAttribute("message", message);
 
         List<Ligne> listl = sessionAdministrateur.RetournerLignes();
-        request.setAttribute("listegares", listl);
+        request.setAttribute("listelignes", listl);
     }
     
     protected void doActionSupprimerLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

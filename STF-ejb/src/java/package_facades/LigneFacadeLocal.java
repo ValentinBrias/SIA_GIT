@@ -31,13 +31,13 @@ public interface LigneFacadeLocal {
 
     int count();
 
-    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee);
+    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, List <Gare> liste);
 
     Ligne RechercherLigneParId(long id);
 
     void SupprimerLigne(long id);
 
-    void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee);
+    void ModifierLigne(long id, int num, Gare gareDepart, Gare gareArrivee, List<Gare> liste);
 
     Ligne RechercherLigneParNum(int num);
 

@@ -4,6 +4,7 @@
     Author     : 3099709
 --%>
 
+<%@page import="package_entite.Gare"%>
 <%@page import="java.util.List"%>
 <%@page import="package_entite.Ligne"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,6 +48,7 @@
                 <th>Numéro de ligne</th>
                 <th>Départ</th>
                 <th>Arrivée</th>
+                <th>Listes gares</th>
                 <th>Nombre de gares</th>
                 <th>Fiche horaire</th>
                 <th>Fiche tarifaire</th>
@@ -54,12 +56,15 @@
             </tr>
             <%
                 List<Ligne> lesLig=listelignes;
-                for(Ligne a:lesLig){%>
+                for(Ligne a:lesLig){
+                List <Gare> lesGa = a.getLesGares();
+            %>
                 <tr>
                     <td Width=5%><%=a.getNumLigne()%></td>
                     <td Width=15%><%=a.getGareDepart().getNomGare()%></td>
                     <td Width=10%><%=a.getGareArrivee().getNomGare()%></td>
                     <td Width=10%><%=a.getNbGare()%></td>
+                    <td Width=10%><%for(Gare g:lesGa){%><li><%=g.getNomGare()%><br><%}%></li></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
                     <td id="ligneTDModifier" Width=10%> 

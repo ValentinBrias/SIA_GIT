@@ -89,8 +89,8 @@ public class Gare implements Serializable {
     
     @ManyToMany(mappedBy = "lesGares")
     @JoinTable(name="LIGNE_GARE", 
-      joinColumns=@JoinColumn(name="LESGARES_ID"),
-      inverseJoinColumns=@JoinColumn(name="LESLIGNES_ID"))
+    joinColumns=@JoinColumn(name="LESGARES_ID"),
+    inverseJoinColumns=@JoinColumn(name="LESLIGNES_ID"))
     private List<Ligne> lesLignes;
 
     public List<Ligne> getLesLignes() {
