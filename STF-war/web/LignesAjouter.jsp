@@ -21,26 +21,29 @@
         <br><br>
         <div class='lignestext'>
             <form method="get" action="Servlet_STF">
-                N° de ligne : <input type="text" value="NumLigne" placeholder="Numéro de ligne" />
-                Départ : <select name="GareDepart"/>
+                N° de ligne : <input type="text" name="NumLigne" placeholder="Numéro de ligne" />
+                Départ : <select name="GareDepart">
                         <!--Liste déroulante des gares-->
                         <%
                             List<Gare> lesGares = listegares;
                             for (Gare g : lesGares) {%>
-                <option value='<%=g.getNomGare()%>'></option> 
+                <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                 <%}%></select>
-                Arrivée : <select name="GareArrivee"/>
+                Arrivée : <select name="GareArrivee">
                         <!--Liste déroulante des gares-->
                         <%
                             for (Gare g : lesGares) {%>
-                <option value='<%=g.getNomGare()%>'></option> 
+                <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                 <%}%></select>
-            </form>
+            
         </div>
             <br>
             <br>
             <div class ="lignesbtn">
-                <input type="submit" value="AjouterLigne"/><input type="hidden" name="action" value="Enregistrer">
+                <input type="hidden" name="action" value="AjouterLigne">
+
+                <input type="submit" value="Valider"/>
+                <input type="reset" value="Remettre à zéro"/>
             </div>
         </form>
     </body>

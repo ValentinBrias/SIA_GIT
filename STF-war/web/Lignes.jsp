@@ -57,8 +57,8 @@
                 for(Ligne a:lesLig){%>
                 <tr>
                     <td Width=5%><%=a.getNumLigne()%></td>
-                    <td Width=15%><%=a.getGareDepart()%></td>
-                    <td Width=10%><%=a.getGareArrivee()%></td>
+                    <td Width=15%><%=a.getGareDepart().getNomGare()%></td>
+                    <td Width=10%><%=a.getGareArrivee().getNomGare()%></td>
                     <td Width=10%><%=a.getNbGare()%></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>

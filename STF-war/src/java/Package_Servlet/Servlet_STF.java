@@ -326,7 +326,7 @@ public class Servlet_STF extends HttpServlet {
             message = "<div class='msg_success'>La gare est créée avec succès !</div>";
         }
         request.setAttribute("message", message);
-        List<Gare> list = sessionAdministrateur.RetournerGares();
+        List<Ligne> list = sessionAdministrateur.RetournerLignes();
         request.setAttribute("listelignes", list);
     } 
     protected void doActionAfficherHoraires(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
