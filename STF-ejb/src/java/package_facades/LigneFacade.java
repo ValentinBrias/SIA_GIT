@@ -32,12 +32,11 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
     }
 
     @Override
-    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, int nbGares) {
+    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee) {
         Ligne ligne = new Ligne(); 
         ligne.setNumLigne(num); 
         ligne.setGareDepart(gareDepart);
         ligne.setGareArrivee(gareArrivee);
-        ligne.setNbGare(nbGares);
         em.persist(ligne);
     }
 
