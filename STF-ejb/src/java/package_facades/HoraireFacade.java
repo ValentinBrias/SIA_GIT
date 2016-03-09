@@ -76,5 +76,16 @@ public class HoraireFacade extends AbstractFacade<Horaire> implements HoraireFac
         listeH = req.getResultList();
         return listeH;
     }
+
+    @Override
+    public List<Horaire> RechercherHoraireParLigne(Ligne ligne) {
+        List<Horaire> listeH;
+        Horaire h = null;
+        String txt = "SELECT h FROM Horaire as h WHERE h.laligne=:laligne";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("laligne", ligne);
+        listeH = req.getResultList();
+        return listeH;
+    }
     
 }

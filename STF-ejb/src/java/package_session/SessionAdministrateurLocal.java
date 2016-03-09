@@ -50,5 +50,7 @@ public interface SessionAdministrateurLocal {
     Horaire RechercherHoraireParId(long id);
 
     Ligne RechercherLigneParNum(int num);
+
+    List<Horaire> RechercherHoraireParLigne(Ligne ligne);
     
 }

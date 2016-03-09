@@ -42,5 +42,7 @@ public interface HoraireFacadeLocal {
     void SupprimerHoraire(long id);
 
     List<Horaire> RetournerHoraires();
+
+    List<Horaire> RechercherHoraireParLigne(Ligne ligne);
     
 }

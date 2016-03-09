@@ -119,6 +119,12 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
         Ligne l = ligneFacade.RechercherLigneParNum(num);
         return l;
     }
+
+    @Override
+    public List<Horaire> RechercherHoraireParLigne(Ligne ligne) {
+        List<Horaire> list = horaireFacade.RechercherHoraireParLigne(ligne);
+        return list;
+    }
     
     
 }
