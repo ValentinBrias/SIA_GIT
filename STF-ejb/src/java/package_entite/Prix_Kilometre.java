@@ -6,10 +6,12 @@
 package package_entite;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -54,5 +56,28 @@ public class Prix_Kilometre implements Serializable {
     public String toString() {
         return "package_entite.Prix_Kilometre[ id=" + id + " ]";
     }
+    private double prixKilometre;
     
+    @OneToMany(mappedBy = "lePrixKm")
+    private List<DistanceGare> lesDistanceGares;
+
+    public List<DistanceGare> getLesDistanceGares() {
+        return lesDistanceGares;
+    }
+
+    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
+        this.lesDistanceGares = lesDistanceGares;
+    }
+
+    public double getPrixKilometre() {
+        double prixKm = 0;
+        for (DistanceGare d:lesDistanceGares){
+            prixKm += d.getDistanceGare();
+        }
+        return prixKm;
+    }
+
+    public void setPrixKilometre(double prixKilometre) {
+        this.prixKilometre = prixKilometre;
+    }
 }

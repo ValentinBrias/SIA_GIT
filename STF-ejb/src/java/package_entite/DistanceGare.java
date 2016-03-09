@@ -118,4 +118,6 @@ public class DistanceGare implements Serializable {
         this.laLigne = laLigne;
     }
 
+    @ManyToOne
+    private Prix_Kilometre lePrixKm;
 }
