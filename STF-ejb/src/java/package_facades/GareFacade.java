@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import package_entite.Gare;
+import package_entite.Ligne;
 
 /**
  *
@@ -39,10 +40,11 @@ public class GareFacade extends AbstractFacade<Gare> implements GareFacadeLocal 
    }
 
     @Override
-    public void ModifierGare(long id, String nom, String adresse) {
+    public void ModifierGare(long id, String nom, String adresse, List<Ligne> list) {
         Gare gare = RechercherGareParId(id) ;
         gare.setNomGare(nom); 
         gare.setAdresse(adresse);
+        gare.setLesLignes(list);
         em.merge(gare);
     }
 
