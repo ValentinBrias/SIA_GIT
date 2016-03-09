@@ -107,12 +107,19 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
         Ligne l = ligneFacade.RechercherLigneParId(id);
         return l;
     }
-
+    @Override
+    public Ligne RechercherLigneParNum(int num) {
+        Ligne l = ligneFacade.RechercherLigneParNum(num);
+        return l;
+    }
+    
     @Override
     public Horaire RechercherHoraireParId(long id) {
         Horaire h = horaireFacade.RechercherHoraireParId(id);
         return h;
     }
+
+    
     
     
 }

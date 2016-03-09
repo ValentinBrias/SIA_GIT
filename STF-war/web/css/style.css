@@ -1,7 +1,7 @@
 /* Stylesheet / CSS */
 
 /* Body */
-.h1
+#h1
 {
     margin-left:10%;
 }
@@ -28,20 +28,33 @@
 
  
 /* Lignes */
+/*Le css est en pause
 .lignesbtn 
 {
     width:100px;
     float: right;
     margin-right:10%;
+    margin-top:1%;
     color:black;
     border-width:2px;
 }
-
+*/
 .lignesbtn_ajouter
 {
     width:100px;
     float: left;
     margin-left:10%;
+    margin-top:1%;
     color:black;
     border-width:2px;
+}
+
+.lignestext
+{
+    margin-left:10%;
+}
+
+#ligneTDModifier
+{
+    text-align: center;
 }

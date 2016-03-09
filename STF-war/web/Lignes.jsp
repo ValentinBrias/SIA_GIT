@@ -11,18 +11,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/style.css" />
         <jsp:useBean id="listelignes" scope="request" class="java.util.List"></jsp:useBean>
         <title>Lignes</title>
     </head>
     <body>
+        
+        <!-- Inclusion du menu par la jsp Navigation -->
         <%@ include file="Navigation.jsp" %>
-        <h1>Lignes</h1>
-        <br><br>
-        Sélectionner une ligne <input type="text" placeholder="Rechercher une ligne" /> <input type="submit" value="Chercher"/><input type="hidden" name="action" value="DefileRechercher">
 
-
+        <h1 id="h1">Lignes</h1>
         <br><br>
+        
+        <!-- Méthode de la recherche d'une ligne -->
+        <div class ="lignestext">
+            <form method="get" action="Servlet_STF">
+                Sélectionner une ligne 
+                <input type="text" name="NumLigne" placeholder="Rechercher une ligne" /> 
+                <input type="hidden" name="action" value="RechercherLigne">
+                <input type="submit" value="Rechercher"/>
+            </form>
+        </div>
+        
+        <br><br>
+        
+        <!-- Affichage de la liste de toutes les lignes -->
         <TABLE align='center' border="solid black" width="80%" CELLSPACING=0 CELLPADDING=5>
             <tr BGCOLOR="#C0C0C0">
                 <th>Identifiant lignes</th>
@@ -41,19 +53,16 @@
                     <td Width=15%><%=a.getGareDepart()%></td>
                     <td Width=10%><%=a.getGareArrivee()%></td>
                     <td Width=10%><%=a.getNbGare()%></td>
-                    <td Width=10%><a href="">Fiche horaire</a></td>
-                    <td Width=10%><a href="">Fiche tarifaire</a></td>
-                    <td Width=10%><%=a.getId()%></td>
+                    <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
+                    <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
+                    <td id="ligneTDModifier" Width=10%><button> <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification">Modifier</a></button>
+                    <button> <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression">Supprimer</a></button></td>
                 </tr><%}%>
         </TABLE>
         
+        <!-- Bouton ajouter une ligne -->
         <div class ="lignesbtn_ajouter">
         <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="LigneAjouter">
-        </div>
-        <div class ="lignesbtn">
-            <input type="submit" value="Modifier"/><input type="hidden" name="action" value="test">
-            <br>
-            <input type="submit" value="Supprimer"/><input type="hidden" name="action" value="toast">
         </div>
     </body>
 </html>

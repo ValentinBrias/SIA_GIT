@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@ include file="Navigation.jsp" %>
-        <h1>Lignes > Modifier</h1>
+        <h1 id="h1">Lignes > Modifier</h1>
         <br><br>
         <form method="get" action="Servlet_STF">
             <TABLE border ="1">

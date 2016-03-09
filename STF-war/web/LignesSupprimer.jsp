@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@ include file="Navigation.jsp" %>
-        <h1>Lignes > Supprimer</h1>
+        <h1 id="h1">Lignes > Supprimer</h1>
         <br><br>
         <div class="lignesbody">Etes-vous sûr de vouloir supprimer la ligne sélectionnée ?</div>
         <form method="get" action="Servlet_STF">
