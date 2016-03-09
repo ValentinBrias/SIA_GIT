@@ -23,7 +23,7 @@
         <br><br>
         
         <!-- Méthode de la recherche d'une ligne -->
-        <div class ="lignestext">
+        <div class ="text">
             
             <form method="get" action="Servlet_STF">
                 Sélectionner une ligne 
@@ -42,8 +42,8 @@
         
         
         <!-- Affichage de la liste de toutes les lignes -->
-        <TABLE align='center' border="solid black" width="80%" CELLSPACING=0 CELLPADDING=5>
-            <tr BGCOLOR="#C0C0C0">
+        <TABLE id="allTable">
+            <tr id="allTr">
                 <th>Numéro de ligne</th>
                 <th>Départ</th>
                 <th>Arrivée</th>
@@ -67,8 +67,8 @@
                 </tr><%}%>
         </TABLE>
         
-        <!-- Bouton ajouter une ligne -->
-        <div class ="lignesbtn_ajouter">
+        <!-- Bouton ajouter -->
+        <div class ="btn_gauche">
             <a href="Servlet_STF?action=LigneAjouter"><button>Ajouter</button></a>
         </div>
     </body>

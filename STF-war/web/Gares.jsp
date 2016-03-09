@@ -16,18 +16,20 @@
         <title>Gares</title>
     </head>
     <body>
+        
+        <!-- Inclusion du menu par la jsp Navigation -->
         <%@ include file="Navigation.jsp" %>
-        <h1>Gares</h1>
+        
+        <h1 id="h1">Gares</h1>
         <br><br>
-        <h2 align='center'>Liste des gares</h2>
         <p>
         <%
             String attribut=(String)request.getAttribute("message");
             out.println(attribut);
         %>
         </p>
-        <TABLE>
-            <tr>
+        <TABLE id="allTable">
+            <tr id="allTr">
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Adresse</th>
@@ -45,6 +47,10 @@
                     <td align='center'><a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button> Supprimer</button></a></td>
                 </tr><%}%>
         </TABLE>
-        <a href="Servlet_STF?action=CreationGares">Ajouter une Gare</a>
+        
+        <!-- Bouton ajouter -->
+        <div class ="btn_gauche">
+            <a href="Servlet_STF?action=CreationGares"><button>Ajouter</button></a>
+        </div>
     </body>
 </html>

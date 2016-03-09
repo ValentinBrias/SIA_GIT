@@ -95,7 +95,7 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Gares.jsp";
                 List<Gare> list = sessionAdministrateur.RetournerGares();
                 request.setAttribute("listegares", list);
-                request.setAttribute("message", "Liste des gares");
+                request.setAttribute("message", "");
             } 
             else if (act.equals("CreationGares")) {
                 jspClient = "/GareCreer.jsp";

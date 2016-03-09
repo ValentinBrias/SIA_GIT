@@ -14,15 +14,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listelignes" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="gare" scope="request" class="Gare"></jsp:useBean>
-        <title>JSP Page</title>
-    </head>
-    <body>
+            <title>Gare</title>
+        </head>
+        <body>
+            
+        <!-- Inclusion du menu par la jsp Navigation -->
         <%@ include file="Navigation.jsp" %>
-        <h1>Modifier gare</h1>
+        
+        <h1 id="h1">Modifier gare</h1>
+        
         <form method="get" action="Servlet_STF">
-            <TABLE border ="1">
-                <tr>
-                    <td></td><td>Données actuelles</td><td>Nouvelles données</td>
+            <TABLE id="GareModif">
+                <tr id="allTr">
+                    <th></th><th>Données actuelles</th><th>Nouvelles données</th>
                 </tr>
                 <tr>
                     <td>Nom</td><td><%=gare.getNomGare()%></td><td><input type="text" name="nom" placeholder='nouveau nom'/></td>
@@ -32,21 +36,27 @@
                 </tr>
                 <tr>
                     <% List<Ligne> lesLignes = gare.getLesLignes();%>
-                    <td>Lignes</td><td><%for(Ligne l:lesLignes){%><%=l.getNumLigne()%><br><%}%></td> <!--Liste des lignes liés à la gare-->
+                    <td>Lignes</td><td><%for (Ligne l : lesLignes) {%><%=l.getNumLigne()%><br><%}%></td> <!--Liste des lignes liés à la gare-->
                     <td>Nouvelle lignes : *<br>
-                    <%List<Ligne> touteslignes = listelignes;
-                    for(Ligne l :touteslignes){%>
-                    <input type="checkbox" name="lignes" value="<%=l.getId()%>"/><%=l.getNumLigne()%><br> <!--Checkbox pour toutes les lignes dispos-->
-                    <%}%>
+                        <%List<Ligne> touteslignes = listelignes;
+                        for (Ligne l : touteslignes) {%>
+                        <input type="checkbox" name="lignes" value="<%=l.getId()%>"/><%=l.getNumLigne()%><br> <!--Checkbox pour toutes les lignes dispos-->
+                        <%}%>
                     </td>
                 </tr>
-        </TABLE>
-        <br>
-        * Si aucune ligne n'est sélectionnée, les lignes ne seront pas modifiés.<br>
-        Si au moins 1 ligne est sélectionnée, les anciennes lignes seront remplacées.<br><br>
-        <input type="hidden" name="idgare" value="<%=gare.getId()%>"/>
-        <input type="hidden" name="action" value="ModifierGare"/>
-        <input type="submit" value="Enregistrer"/>
+            </TABLE>
+            <br>
+            <div class="text">
+                * Si aucune ligne n'est sélectionnée, les lignes ne seront pas modifiés.<br>
+                Si au moins 1 ligne est sélectionnée, les anciennes lignes seront remplacées.
+            </div>
+            <br><br>
+            <!-- Bouton Enregistrer -->
+            <div class ="btn_gauche">
+                <input type="hidden" name="idgare" value="<%=gare.getId()%>"/>
+                <input type="hidden" name="action" value="ModifierGare"/>
+                <input type="submit" value="Enregistrer"/>
+            </div>
         </form>
     </body>
 </html>
