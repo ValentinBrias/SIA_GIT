@@ -40,9 +40,9 @@
                     <td Width=15%><%=g.getId()%></td>
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=15%><%=g.getAdresse()%></td>
-                    <td Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne() %><%}%></td>
-                    <td align='center'><button> <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare">Modifier</a></button></td>
-                    <td align='center'><button> <a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare">Supprimer</a></button></td>
+                    <td Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne()%> / <%}%></td>
+                    <td align='center'> <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare"><button>Modifier</button></a></td>
+                    <td align='center'><a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button> Supprimer</button></a></td>
                 </tr><%}%>
         </TABLE>
         <a href="Servlet_STF?action=CreationGares">Ajouter une Gare</a>

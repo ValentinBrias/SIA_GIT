@@ -107,7 +107,13 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Gares.jsp";
                 doActionModifierGare(request, response);
             }
+            else if (act.equals("SuppressionGare")) {
+                jspClient = "/Gares.jsp";
+                doActionSupprimerGare(request, response);
+            }
             
+                    
+                    
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
             Rd.forward(request, response);
@@ -199,8 +205,7 @@ public class Servlet_STF extends HttpServlet {
         String message;
 
         if (nom.trim().isEmpty() || adresse.trim().isEmpty() || ligne==null) {
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires."
-                    + "<br/><a href=\"GareCreer.jsp\">Cliquez ici</a> pour accéder au formulaire de création de gare.";
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
         } else {
             List <Ligne> listel = new ArrayList<Ligne>();
             for (String idl:ligne){
@@ -256,11 +261,24 @@ public class Servlet_STF extends HttpServlet {
         
         sessionAdministrateur.ModifierGare(idgare, nom, adresse, list);
 
-        String message = "<font color='green'>Vêtement modifié avec succès !</font>";
+        String message = "<font color='green'>Gare modifiée avec succès !</font>";
         request.setAttribute("message", message);
 
         List<Gare> listg = sessionAdministrateur.RetournerGares();
         request.setAttribute("listegares", listg);
+    }
+    
+    protected void doActionSupprimerGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String message;
+        String id = request.getParameter("suppr");
+        
+        Long idgare = Long.valueOf(id);
+        sessionAdministrateur.SupprimerGare(idgare);
+        message = "<font color='green'>Gare supprimée avec succès!</font>";
+
+        request.setAttribute("message", message);
+        List<Gare> list = sessionAdministrateur.RetournerGares();
+        request.setAttribute("listegares", list);
     }
 	
     protected void doActionRechercherLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
