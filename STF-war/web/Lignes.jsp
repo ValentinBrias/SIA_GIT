@@ -62,14 +62,14 @@
                     <td Width=10%><%=a.getNbGare()%></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
-                    <td id="ligneTDModifier" Width=10%><button> <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification">Modifier</a></button>
-                    <button> <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression">Supprimer</a></button></td>
+                    <td id="ligneTDModifier" Width=10%> <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification"><button>Modifier</button></a>
+                    <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression"><button>Supprimer</button></a></td>
                 </tr><%}%>
         </TABLE>
         
         <!-- Bouton ajouter une ligne -->
         <div class ="lignesbtn_ajouter">
-        <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="LigneAjouter">
+            <a href="Servlet_STF?&action=LigneAjouter"><button>Ajouter</button></a>
         </div>
     </body>
 </html>
