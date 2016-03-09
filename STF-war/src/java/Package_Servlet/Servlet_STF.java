@@ -79,12 +79,7 @@ public class Servlet_STF extends HttpServlet {
                 List<Gare> list = sessionAdministrateur.RetournerGares();
                 request.setAttribute("listegares", list);
                 request.setAttribute("message", "Liste des gares");
-            } else if (act.equals("CreationGares")) {
-                jspClient = "/GareCreer.jsp";
-                List<Ligne> list = sessionAdministrateur.RetournerLignes();
-                request.setAttribute("listelignes", list);
-            }
-             else if (act.equals("GareAjouter")) {
+            } else if (act.equals("GareAjouter")) {
                 jspClient = "/Gares.jsp";
                 doActionCreationGare(request, response);
             }
