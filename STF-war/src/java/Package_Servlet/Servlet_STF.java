@@ -6,6 +6,7 @@
 package Package_Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -72,10 +73,10 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Lignes.jsp";
                 List<Ligne> list = sessionAdministrateur.RetournerLignes();
                 request.setAttribute("listelignes", list);
-                request.setAttribute("message", "Liste des lignes");
+                request.setAttribute("message", "");
             }
             else if (act.equals("RechercherLigne")) {
-                jspClient = "/LigneRechercherResultat.jsp";
+                jspClient = "/Lignes.jsp";
                 doActionRechercherLigne(request, response);
             } 
             else if (act.equals("AfficherGares")) {
@@ -199,8 +200,12 @@ public class Servlet_STF extends HttpServlet {
             message = "Erreur - Vous devez saisir un numéro de ligne.";
         } else {
             Ligne l = sessionAdministrateur.RechercherLigneParNum(num);
+            List<Ligne> liste = new ArrayList<Ligne>();
+            liste.add(l);
+            request.setAttribute("listelignes", liste);
             message = "";
-        }
+        }      
         request.setAttribute("message", message);
+
     }
 }
