@@ -99,6 +99,10 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Lignes.jsp";
                 doActionModifierLigne(request, response);
             }
+            else if (act.equals("LigneSuppression")) {
+                jspClient = "/Lignes.jsp";
+                doActionSupprimerLigne(request, response);
+            }
             else if (act.equals("AfficherGares")) {
                 jspClient = "/Gares.jsp";
                 List<Gare> list = sessionAdministrateur.RetournerGares();
@@ -402,7 +406,7 @@ public class Servlet_STF extends HttpServlet {
 
         request.setAttribute("message", message);
         List<Ligne> list = sessionAdministrateur.RetournerLignes();
-        request.setAttribute("listegares", list);
+        request.setAttribute("listelignes", list);
     }
     
     protected void doActionAfficherHoraires(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
