@@ -84,9 +84,22 @@ public class Servlet_STF extends HttpServlet {
                 List<Gare> list = sessionAdministrateur.RetournerGares();
                 request.setAttribute("listegares", list);
                 request.setAttribute("message", "Liste des gares");
-            } else if (act.equals("GareAjouter")) {
+            } else if (act.equals("CreationGares")) {
+                jspClient = "/GareCreer.jsp";
+                List<Ligne> list = sessionAdministrateur.RetournerLignes();
+                request.setAttribute("listelignes", list);
+            }
+             else if (act.equals("GareAjouter")) {
                 jspClient = "/Gares.jsp";
                 doActionCreationGare(request, response);
+            }
+            else if (act.equals("ModificationGare")) {
+                jspClient = "/GareModifier.jsp";
+                doActionAfficherModifGare(request, response);
+            }
+            else if (act.equals("ModifierGare")) {
+                jspClient = "/Gares.jsp";
+                doActionModifierGare(request, response);
             }
             
             RequestDispatcher Rd;
@@ -176,14 +189,20 @@ public class Servlet_STF extends HttpServlet {
     protected void doActionCreationGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nom = request.getParameter("nom");
         String adresse = request.getParameter("adresse");
+        String ligne[] = request.getParameterValues("ligne");
         String message;
 
-        if (nom.trim().isEmpty() || adresse.trim().isEmpty()) {
+        if (nom.trim().isEmpty() || adresse.trim().isEmpty() || ligne==null) {
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires."
                     + "<br/><a href=\"GareCreer.jsp\">Cliquez ici</a> pour accéder au formulaire de création de gare.";
         } else {
-
-            sessionAdministrateur.CreerGare(nom, adresse);
+            List <Ligne> listel = new ArrayList<Ligne>();
+            for (String idl:ligne){
+                Long idligne = Long.valueOf(idl);
+                Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+                listel.add(l);
+            }
+            sessionAdministrateur.CreerGare(nom, adresse, listel);
             message = "La gare est créée avec succès !";
         }
         request.setAttribute("message", message);
@@ -191,6 +210,53 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("listegares", list);
     }
     
+	protected void doActionAfficherModifGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String gare = request.getParameter("modif"); //récupère l'id de la gare à modifier
+        Long idgare = Long.valueOf(gare);
+        Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+        request.setAttribute("gare", g); //envoie la gare à modifier à la JSP
+        
+        List<Ligne> listl = sessionAdministrateur.RetournerLignes();
+        request.setAttribute("listelignes", listl); //envoie la liste de toutes les lignes à la JSP
+    }
+    
+    protected void doActionModifierGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String id = request.getParameter("idgare");
+        Long idgare = Long.valueOf(id);
+        Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+        
+        String nom = request.getParameter("nom");
+        String adresse = request.getParameter("adresse");
+        String ligne[] = request.getParameterValues("lignes");
+        List <Ligne> list = new ArrayList<Ligne>();
+        
+        if (nom.trim().isEmpty()){
+            nom = g.getNomGare();
+        }
+        if (adresse.trim().isEmpty()){
+            adresse = g.getAdresse();
+        }
+        
+        if (ligne==null){
+            list = g.getLesLignes();
+        } else {
+            for (String idl:ligne){
+                Long idligne = Long.valueOf(idl);
+                Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+                list.add(l);
+            }
+        }
+        
+        sessionAdministrateur.ModifierGare(idgare, nom, adresse, list);
+
+        String message = "<font color='green'>Vêtement modifié avec succès !</font>";
+        request.setAttribute("message", message);
+
+        List<Gare> listg = sessionAdministrateur.RetournerGares();
+        request.setAttribute("listegares", listg);
+    }
+	
     protected void doActionRechercherLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String numLigne = request.getParameter("NumLigne"); //dans ligne on récupère un numéro de ligne 
         int num = Integer.parseInt(numLigne);
