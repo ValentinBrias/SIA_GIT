@@ -4,12 +4,16 @@
     Author     : 3099709
 --%>
 
+<%@page import="package_entite.Gare"%>
+<%@page import="java.util.List"%>
+<%@page import="package_entite.Ligne"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/style.css" />
+        <jsp:useBean id="listegares" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="Ligne" scope="request" class="Ligne"></jsp:useBean>
         <title>Lignes</title>
     </head>
     <body>
@@ -17,27 +21,46 @@
         <h1 id="h1">Lignes > Modifier</h1>
         <br><br>
         <form method="get" action="Servlet_STF">
-            <TABLE border ="1">
-                <tr>
-                    <td></td><td>Données actuelles</td><td>Nouvelles données</td>
+            <TABLE id="TableModif">
+                <tr id="allTr">
+                    <th></th><th>Données actuelles</th><th>Nouvelles données</th>
                 </tr>
                 <tr>
-                    <td>Désignation</td><td><%=Ligne.getDesignation()%></td><td><input type="text" name="designation" placeholder='nouveau nom'/></td>
+                    <td>Numéro</td><td><%=Ligne.getNumLigne()%></td><td><input type="text" name="numLigne" placeholder='nouveau numéro'/></td>
                 </tr>
                 <tr>
-                    <td>Prix</td><td><%=Ligne.getPrixUnitaire()%></td><td><input type="text" name="prix" placeholder='nouveau prix'/></td>
+                    <td>Gare départ</td><td><%=Ligne.getGareDepart().getNomGare()%></td><td><input type="text" name="gareDepart" placeholder='nouvelle gare de départ'/></td>
                 </tr>
                 <tr>
-                    <td>Prix de location</td><td><%=Ligne.getPrixLocation()%></td><td><input type="text" name="prixloc" placeholder='nouveau prix de location'/></td>
+                    <td>Gare arrivée</td><td><%=Ligne.getGareArrivee().getNomGare()%></td><td><input type="text" name="prixloc" placeholder='nouvelle gare de départ'/></td>
                 </tr>
-                <tr>
-                    <td>Prix de l'assurance</td><td><%=Ligne.getPrixAssurance()%></td><td><input type="text" name="prixassu" placeholder="nouveau prix d'assurance"/></td>
+                <tr><!--Liste des gares liés à la ligne-->
+                    <% List<Gare> lesGares = Ligne.getLesGares();%>
+                    <td>Gares</td><td><%for (Gare g : lesGares) {%><%=g.getNomGare()%><br><%}%></td> 
+                    <td>Nouvelle lignes : *<br>
+                        <%List<Gare> toutesgares = listegares;
+                        for (Gare g : toutesgares) {%>
+                        <!--Checkbox pour toutes les gares dispos-->
+                        <input type="checkbox" name="gares" value="<%=g.getId()%>"/><%=g.getNomGare()%><br> 
+                        <%}%>
+                        </td>
                 </tr>
-            </table>
+            </TABLE>
             <br>
-            <br>
-            <div class ="lignesbtn">
-                <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="Enregistrer">
+            
+            <div class="text">
+                * Si aucune ligne n'est sélectionnée, les lignes ne seront pas modifiés.<br>
+                Si au moins 1 ligne est sélectionnée, les anciennes lignes seront remplacées.
+            </div>
+            
+            <br><br>
+            
+            
+            <!-- Bouton Enregistrer -->
+            <div class ="btn_gauche">
+                <input type="hidden" name="idligne" value="<%=Ligne.getId()%>"/>
+                <input type="hidden" name="action" value="ModifierLigne"/>
+                <input type="submit" value="Enregistrer"/>
             </div>
         </form>
                 

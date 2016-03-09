@@ -62,8 +62,10 @@
                     <td Width=10%><%=a.getNbGare()%></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
-                    <td id="ligneTDModifier" Width=10%> <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification"><button>Modifier</button></a>
-                    <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression"><button>Supprimer</button></a></td>
+                    <td id="ligneTDModifier" Width=10%> 
+                        <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification"><button>Modifier</button></a>
+                        <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression"><button>Supprimer</button></a>
+                    </td>
                 </tr><%}%>
         </TABLE>
         

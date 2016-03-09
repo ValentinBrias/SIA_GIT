@@ -22,12 +22,16 @@
         
         <h1 id="h1">Gares</h1>
         <br><br>
-        <p>
+        <div class ="text">
         <%
             String attribut=(String)request.getAttribute("message");
             out.println(attribut);
         %>
-        </p>
+        </div>
+        
+        <br><br>
+        
+        
         <TABLE id="allTable">
             <tr id="allTr">
                 <th>Id</th>
@@ -43,8 +47,12 @@
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=15%><%=g.getAdresse()%></td>
                     <td Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne()%> / <%}%></td>
-                    <td align='center'> <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare"><button>Modifier</button></a></td>
-                    <td align='center'><a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button> Supprimer</button></a></td>
+                    <td id="ligneTDModifier" Width=10%>
+                        <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare"><button>Modifier</button></a>
+                    </td>
+                    <td id="ligneTDModifier" Width=10%>
+                        <a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button> Supprimer</button></a>
+                    </td>
                 </tr><%}%>
         </TABLE>
         

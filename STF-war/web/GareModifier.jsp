@@ -24,7 +24,7 @@
         <h1 id="h1">Modifier gare</h1>
         
         <form method="get" action="Servlet_STF">
-            <TABLE id="GareModif">
+            <TABLE id="TableModif">
                 <tr id="allTr">
                     <th></th><th>Données actuelles</th><th>Nouvelles données</th>
                 </tr>
@@ -51,6 +51,7 @@
                 Si au moins 1 ligne est sélectionnée, les anciennes lignes seront remplacées.
             </div>
             <br><br>
+            
             <!-- Bouton Enregistrer -->
             <div class ="btn_gauche">
                 <input type="hidden" name="idgare" value="<%=gare.getId()%>"/>

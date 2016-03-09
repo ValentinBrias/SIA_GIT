@@ -215,7 +215,7 @@ public class Servlet_STF extends HttpServlet {
         String message;
 
         if (nom.trim().isEmpty() || adresse.trim().isEmpty() || ligne==null) {
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
+            message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
         } else {
             List <Ligne> listel = new ArrayList<Ligne>();
             for (String idl:ligne){
@@ -224,7 +224,7 @@ public class Servlet_STF extends HttpServlet {
                 listel.add(l);
             }
             sessionAdministrateur.CreerGare(nom, adresse, listel);
-            message = "La gare est créée avec succès !";
+            message = "<div class='msg_success'>La gare est créée avec succès !</div>";
         }
         request.setAttribute("message", message);
         List<Gare> list = sessionAdministrateur.RetournerGares();
@@ -284,7 +284,7 @@ public class Servlet_STF extends HttpServlet {
         
         Long idgare = Long.valueOf(id);
         sessionAdministrateur.SupprimerGare(idgare);
-        message = "<div class='msg_success'><font color='green'>Gare supprimée avec succès!</div>";
+        message = "<div class='msg_success'>Gare supprimée avec succès!</div>";
 
         request.setAttribute("message", message);
         List<Gare> list = sessionAdministrateur.RetournerGares();
