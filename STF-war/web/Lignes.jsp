@@ -29,6 +29,10 @@
                 <input type="text" name="NumLigne" placeholder="Rechercher une ligne" /> 
                 <input type="hidden" name="action" value="RechercherLigne">
                 <input type="submit" value="Rechercher"/>
+                <%
+                    String attribut = (String) request.getAttribute("message");
+                    out.println(attribut);
+                %>
             </form>
         </div>
         
