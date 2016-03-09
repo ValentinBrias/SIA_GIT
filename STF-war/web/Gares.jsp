@@ -4,6 +4,7 @@
     Author     : 3099709
 --%>
 
+<%@page import="package_entite.Ligne"%>
 <%@page import="package_entite.Gare"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,6 +31,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Adresse</th>
+                <th>Lignes</th>
             </tr>
             <%
                 List<Gare> lesGares=listegares;
@@ -38,8 +40,11 @@
                     <td Width=15%><%=g.getId()%></td>
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=15%><%=g.getAdresse()%></td>
+                    <td Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne() %><%}%></td>
+                    <td align='center'><button> <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare">Modifier</a></button></td>
+                    <td align='center'><button> <a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare">Supprimer</a></button></td>
                 </tr><%}%>
         </TABLE>
-        <a href="GareCreer.jsp">Ajouter une Gare</a>
+        <a href="Servlet_STF?action=CreationGares">Ajouter une Gare</a>
     </body>
 </html>
