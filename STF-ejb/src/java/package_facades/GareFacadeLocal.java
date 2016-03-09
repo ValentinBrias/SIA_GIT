@@ -8,6 +8,7 @@ package package_facades;
 import java.util.List;
 import javax.ejb.Local;
 import package_entite.Gare;
+import package_entite.Ligne;
 
 /**
  *
@@ -32,7 +33,7 @@ public interface GareFacadeLocal {
 
     void CreerGare(String nomGare, String adresse);
 
-    void ModifierGare(long id, String nom, String adresse);
+    void ModifierGare(long id, String nom, String adresse, List<Ligne> list);
 
     Gare RechercherGareParId(long id);
 
