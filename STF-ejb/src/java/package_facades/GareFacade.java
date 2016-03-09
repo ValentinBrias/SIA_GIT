@@ -32,10 +32,11 @@ public class GareFacade extends AbstractFacade<Gare> implements GareFacadeLocal 
     }
 
     @Override
-    public void CreerGare(String nomGare, String adresse) {
+    public void CreerGare(String nomGare, String adresse, List<Ligne> list) {
         Gare gare = new Gare(); 
         gare.setNomGare(nomGare); 
         gare.setAdresse(adresse);
+        gare.setLesLignes(list);
         em.persist(gare); 
    }
 

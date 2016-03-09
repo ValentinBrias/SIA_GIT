@@ -19,7 +19,7 @@ import package_entite.Ligne;
 @Local
 public interface SessionAdministrateurLocal {
 
-    void CreerGare(String nom, String adresse);
+    void CreerGare(String nom, String adresse, List<Ligne> list);
 
     void SupprimerGare(long id);
 
@@ -48,7 +48,5 @@ public interface SessionAdministrateurLocal {
     Ligne RechercherLigneParId(long id);
 
     Horaire RechercherHoraireParId(long id);
-
-    Ligne RechercherLigneParNum(int num);
     
 }

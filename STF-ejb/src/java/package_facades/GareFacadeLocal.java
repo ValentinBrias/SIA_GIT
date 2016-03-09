@@ -31,7 +31,7 @@ public interface GareFacadeLocal {
 
     int count();
 
-    void CreerGare(String nomGare, String adresse);
+    void CreerGare(String nomGare, String adresse, List<Ligne> list);
 
     void ModifierGare(long id, String nom, String adresse, List<Ligne> list);
 

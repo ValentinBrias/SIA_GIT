@@ -34,8 +34,8 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void CreerGare(String nom, String adresse) {
-        gareFacade.CreerGare(nom, adresse);
+    public void CreerGare(String nom, String adresse, List<Ligne> list) {
+        gareFacade.CreerGare(nom, adresse, list);
     }
 
     @Override
@@ -107,19 +107,12 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
         Ligne l = ligneFacade.RechercherLigneParId(id);
         return l;
     }
-    @Override
-    public Ligne RechercherLigneParNum(int num) {
-        Ligne l = ligneFacade.RechercherLigneParNum(num);
-        return l;
-    }
-    
+
     @Override
     public Horaire RechercherHoraireParId(long id) {
         Horaire h = horaireFacade.RechercherHoraireParId(id);
         return h;
     }
-
-    
     
     
 }
