@@ -23,7 +23,7 @@ public interface SessionAdministrateurLocal {
 
     void SupprimerGare(long id);
 
-    void ModifierGare(long id, String nom, String adresse);
+    void ModifierGare(long id, String nom, String adresse, List<Ligne> list);
 
     void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, int nbGares);
 
@@ -42,5 +42,11 @@ public interface SessionAdministrateurLocal {
     List<Ligne> RetournerLignes();
 
     List<Horaire> RetournerHoraires();
+
+    Gare RechercherGareParId(long id);
+
+    Ligne RechercherLigneParId(long id);
+
+    Horaire RechercherHoraireParId(long id);
     
 }

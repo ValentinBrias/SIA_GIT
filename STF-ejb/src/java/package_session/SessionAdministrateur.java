@@ -44,8 +44,8 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     }
 
     @Override
-    public void ModifierGare(long id, String nom, String adresse) {
-        gareFacade.ModifierGare(id, nom, adresse);
+    public void ModifierGare(long id, String nom, String adresse, List<Ligne> list) {
+        gareFacade.ModifierGare(id, nom, adresse, list);
     }
 
     @Override
@@ -95,5 +95,24 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
         List<Horaire> list = horaireFacade.RetournerHoraires();
         return list;
     }
+
+    @Override
+    public Gare RechercherGareParId(long id) {
+        Gare g = gareFacade.RechercherGareParId(id);
+        return g;
+    }
+
+    @Override
+    public Ligne RechercherLigneParId(long id) {
+        Ligne l = ligneFacade.RechercherLigneParId(id);
+        return l;
+    }
+
+    @Override
+    public Horaire RechercherHoraireParId(long id) {
+        Horaire h = horaireFacade.RechercherHoraireParId(id);
+        return h;
+    }
+    
     
 }
