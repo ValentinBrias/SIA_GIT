@@ -83,7 +83,6 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Lignes.jsp";
                 List<Ligne> list = sessionAdministrateur.RetournerLignes();
                 request.setAttribute("listelignes", list);
-                request.setAttribute("message", "");
             } 
             else if (act.equals("AfficherGares")) {
                 jspClient = "/Gares.jsp";
@@ -283,19 +282,18 @@ public class Servlet_STF extends HttpServlet {
 	
     protected void doActionRechercherLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String numLigne = request.getParameter("NumLigne"); //dans ligne on récupère un numéro de ligne 
-        int num = Integer.parseInt(numLigne);
         String message;
-
+        List<Ligne> liste = new ArrayList<Ligne>();
         if (numLigne.trim().isEmpty()) {
-            message = "Erreur - Vous devez saisir un numéro de ligne.";
+            message = "<div class='msg_error'>Erreur - Vous devez saisir un numéro de ligne.</div>";
+            liste = sessionAdministrateur.RetournerLignes();
         } else {
+            int num = Integer.parseInt(numLigne);
             Ligne l = sessionAdministrateur.RechercherLigneParNum(num);
-            List<Ligne> liste = new ArrayList<Ligne>();
             liste.add(l);
-            request.setAttribute("listelignes", liste);
             message = "";
-        }      
+          }      
         request.setAttribute("message", message);
-
-    }
+        request.setAttribute("listelignes", liste);
+    } 
 }

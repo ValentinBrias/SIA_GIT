@@ -24,16 +24,17 @@
         
         <!-- Méthode de la recherche d'une ligne -->
         <div class ="lignestext">
+            
             <form method="get" action="Servlet_STF">
                 Sélectionner une ligne 
                 <input type="text" name="NumLigne" placeholder="Rechercher une ligne" /> 
                 <input type="hidden" name="action" value="RechercherLigne">
                 <input type="submit" value="Rechercher"/>
                 <a href="Servlet_STF?&action=LigneRafraichir"> <img id='boutonRafraichir' src='image/LogoRafraichir.png' alt='Rafraichir le tableau'></a>
-                <%
-                    String attribut = (String) request.getAttribute("message");
-                    out.println(attribut);
-                %>
+                    <%
+                        String attribut = (String) request.getAttribute("message");
+                        out.println(attribut);
+                    %>
             </form>
         </div>
         
