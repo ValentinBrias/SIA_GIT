@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import package_entite.Gare;
+import package_entite.Horaire;
 import package_entite.Ligne;
 import package_session.SessionAdministrateurLocal;
 
@@ -110,7 +111,10 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Gares.jsp";
                 doActionSupprimerGare(request, response);
             }
-            
+            else if (act.equals("LigneHoraire")) {
+                jspClient = "/Horaires.jsp";
+                doActionAfficherHoraires(request, response);
+            }
                     
                     
             RequestDispatcher Rd;
@@ -260,7 +264,7 @@ public class Servlet_STF extends HttpServlet {
         
         sessionAdministrateur.ModifierGare(idgare, nom, adresse, list);
 
-        String message = "<font color='green'>Gare modifiée avec succès !</font>";
+        String message = "<div class='msg_success'>Gare modifiée avec succès !</div>";
         request.setAttribute("message", message);
 
         List<Gare> listg = sessionAdministrateur.RetournerGares();
@@ -273,7 +277,7 @@ public class Servlet_STF extends HttpServlet {
         
         Long idgare = Long.valueOf(id);
         sessionAdministrateur.SupprimerGare(idgare);
-        message = "<font color='green'>Gare supprimée avec succès!</font>";
+        message = "<div class='msg_success'><font color='green'>Gare supprimée avec succès!</div>";
 
         request.setAttribute("message", message);
         List<Gare> list = sessionAdministrateur.RetournerGares();
@@ -296,4 +300,14 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("message", message);
         request.setAttribute("listelignes", liste);
     } 
+    
+    protected void doActionAfficherHoraires(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("IdLigne");
+        Long idligne = Long.valueOf(id); 
+        Ligne ligne = sessionAdministrateur.RechercherLigneParId(idligne);
+        String message = "Liste des horaires pour la ligne n°"+ligne.getNumLigne();
+        request.setAttribute("message", message);
+        request.setAttribute("ligne", ligne);
+    }
+    
 }
