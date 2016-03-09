@@ -47,9 +47,6 @@ public class Servlet_STF extends HttpServlet {
             if ((act == null) || (act.equals("null"))) {
                 jspClient = "/MenuPrincipal.jsp";
                 //jspClient = "/Authentification.jsp";
-            } else if (act.equals("LigneAjouter")) {
-                jspClient = "/MenuPrincipal.jsp";
-                //request.setAttribute("message", "");
             }
             else if (act.equals("MenuPrincipal")) {
                 jspClient = "/MenuPrincipal.jsp";
@@ -84,12 +81,22 @@ public class Servlet_STF extends HttpServlet {
                 List<Ligne> list = sessionAdministrateur.RetournerLignes();
                 request.setAttribute("listelignes", list);
             } 
+            else if (act.equals("LigneAjouter")) {
+                jspClient = "/LignesAjouter.jsp";
+                List<Gare> list = sessionAdministrateur.RetournerGares();
+                request.setAttribute("listegares", list);
+            } 
+            else if (act.equals("AjouterLigne")) {
+                jspClient = "/Lignes.jsp";
+                doActionAjouterLigne(request, response);
+            } 
             else if (act.equals("AfficherGares")) {
                 jspClient = "/Gares.jsp";
                 List<Gare> list = sessionAdministrateur.RetournerGares();
                 request.setAttribute("listegares", list);
                 request.setAttribute("message", "Liste des gares");
-            } else if (act.equals("CreationGares")) {
+            } 
+            else if (act.equals("CreationGares")) {
                 jspClient = "/GareCreer.jsp";
                 List<Ligne> list = sessionAdministrateur.RetournerLignes();
                 request.setAttribute("listelignes", list);
@@ -295,5 +302,27 @@ public class Servlet_STF extends HttpServlet {
           }      
         request.setAttribute("message", message);
         request.setAttribute("listelignes", liste);
+    } 
+    
+    protected void doActionAjouterLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String garedep = request.getParameter("GareDepart");
+        String garearr = request.getParameter("GareArrivee");
+        String numLigne = request.getParameter("NumLigne");
+        String message;
+
+        if (garedep.isEmpty() || garearr.isEmpty() || numLigne.isEmpty()) {
+            message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
+        } else {
+            int num = Integer.parseInt(numLigne);
+            Long idgd = Long.valueOf(garedep);
+            Long idga = Long.valueOf(garearr);
+            Gare gad = sessionAdministrateur.RechercherGareParId(idgd);
+            Gare elm = sessionAdministrateur.RechercherGareParId(idga);
+            sessionAdministrateur.CreerLigne(num, gad, elm);
+            message = "<div class='msg_success'>La gare est créée avec succès !</div>";
+        }
+        request.setAttribute("message", message);
+        List<Gare> list = sessionAdministrateur.RetournerGares();
+        request.setAttribute("listelignes", list);
     } 
 }

@@ -5,28 +5,42 @@
 --%>
 
 
+<%@page import="package_entite.Gare"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:useBean id="listegares" scope="request" class="java.util.List"></jsp:useBean>
         <title>Ligne</title>
-        <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>   
         <%@ include file="Navigation.jsp" %>
         <h1 id="h1">Lignes > Ajouter</h1>
         <br><br>
-        <form method="get" action="Servlet_STF">
-            Identifiant : <input type="text" placeholder="Identifiant" />
-            Départ : <input type="text" placeholder="Gare de départ" />
-            Arrivée : <input type="text" placeholder="Gare d'arrivée" />
-            
-        </form>
+        <div class='lignestext'>
+            <form method="get" action="Servlet_STF">
+                N° de ligne : <input type="text" value="NumLigne" placeholder="Numéro de ligne" />
+                Départ : <select name="GareDepart"/>
+                        <!--Liste déroulante des gares-->
+                        <%
+                            List<Gare> lesGares = listegares;
+                            for (Gare g : lesGares) {%>
+                <option value='<%=g.getNomGare()%>'></option> 
+                <%}%></select>
+                Arrivée : <select name="GareArrivee"/>
+                        <!--Liste déroulante des gares-->
+                        <%
+                            for (Gare g : lesGares) {%>
+                <option value='<%=g.getNomGare()%>'></option> 
+                <%}%></select>
+            </form>
+        </div>
             <br>
             <br>
             <div class ="lignesbtn">
-                <input type="submit" value="Ajouter"/><input type="hidden" name="action" value="Enregistrer">
+                <input type="submit" value="AjouterLigne"/><input type="hidden" name="action" value="Enregistrer">
             </div>
         </form>
     </body>

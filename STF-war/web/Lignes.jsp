@@ -44,7 +44,7 @@
         <!-- Affichage de la liste de toutes les lignes -->
         <TABLE align='center' border="solid black" width="80%" CELLSPACING=0 CELLPADDING=5>
             <tr BGCOLOR="#C0C0C0">
-                <th>Identifiant lignes</th>
+                <th>Numéro de ligne</th>
                 <th>Départ</th>
                 <th>Arrivée</th>
                 <th>Nombre de gares</th>
@@ -56,7 +56,7 @@
                 List<Ligne> lesLig=listelignes;
                 for(Ligne a:lesLig){%>
                 <tr>
-                    <td Width=5%><%=a.getId()%></td>
+                    <td Width=5%><%=a.getNumLigne()%></td>
                     <td Width=15%><%=a.getGareDepart()%></td>
                     <td Width=10%><%=a.getGareArrivee()%></td>
                     <td Width=10%><%=a.getNbGare()%></td>
@@ -69,7 +69,7 @@
         
         <!-- Bouton ajouter une ligne -->
         <div class ="lignesbtn_ajouter">
-            <a href="Servlet_STF?&action=LigneAjouter"><button>Ajouter</button></a>
+            <a href="Servlet_STF?action=LigneAjouter"><button>Ajouter</button></a>
         </div>
     </body>
 </html>
