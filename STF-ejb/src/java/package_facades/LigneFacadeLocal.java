@@ -31,7 +31,7 @@ public interface LigneFacadeLocal {
 
     int count();
 
-    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, int nbGares);
+    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee);
 
     Ligne RechercherLigneParId(long id);
 

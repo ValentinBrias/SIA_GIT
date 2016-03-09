@@ -49,8 +49,8 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     }
 
     @Override
-    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, int nbGares) {
-        ligneFacade.CreerLigne(num, gareDepart, gareArrivee, nbGares);
+    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee) {
+        ligneFacade.CreerLigne(num, gareDepart, gareArrivee);
     }
 
     @Override

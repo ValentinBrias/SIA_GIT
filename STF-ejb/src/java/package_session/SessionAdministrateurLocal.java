@@ -25,7 +25,7 @@ public interface SessionAdministrateurLocal {
 
     void ModifierGare(long id, String nom, String adresse, List<Ligne> list);
 
-    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, int nbGares);
+    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee);
 
     void SupprimerLigne(long id);
 
