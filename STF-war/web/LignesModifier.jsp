@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listegares" scope="request" class="java.util.List"></jsp:useBean>
-        <jsp:useBean id="Ligne" scope="request" class="Ligne"></jsp:useBean>
+        <jsp:useBean id="ligne" scope="request" class="Ligne"></jsp:useBean>
         <title>Lignes</title>
     </head>
     <body>
@@ -26,10 +26,10 @@
                     <th></th><th>Données actuelles</th><th>Nouvelles données</th>
                 </tr>
                 <tr>
-                    <td>Numéro</td><td><%=Ligne.getNumLigne()%></td><td><input type="text" name="NumLigne" placeholder='nouveau numéro'/></td>
+                    <td>Numéro</td><td><%=ligne.getNumLigne()%></td><td><input type="text" name="NumLigne" placeholder='nouveau numéro'/></td>
                 </tr>
                 <tr>
-                    <td>Gare départ</td><td><%=Ligne.getGareDepart().getNomGare()%></td>
+                    <td>Gare départ</td><td><%=ligne.getGareDepart().getNomGare()%></td>
                     <td><select name="GareDepart">
                             <!--Liste déroulante des gares-->
                             <%
@@ -39,7 +39,7 @@
                             <%}%></select></td>
                 </tr>
                 <tr>
-                    <td>Gare arrivée</td><td><%=Ligne.getGareArrivee().getNomGare()%></td>
+                    <td>Gare arrivée</td><td><%=ligne.getGareArrivee().getNomGare()%></td>
                     <td><select name="GareArrivee">
                             <!--Liste déroulante des gares-->
                             <%
@@ -48,7 +48,7 @@
                             <%}%></select></td>
                 </tr>
                 <tr><!--Liste des gares liés à la ligne-->
-                    <% List<Gare> lesG = Ligne.getLesGares();%>
+                    <% List<Gare> lesG = ligne.getLesGares();%>
                     <td>Gares</td><td><%for (Gare g : lesG) {%><%=g.getNomGare()%><br><%}%></td> 
                     <td>Nouvelle lignes : *<br>
                         <%List<Gare> toutesgares = listegares;
@@ -71,7 +71,7 @@
             
             <!-- Bouton Enregistrer -->
             <div class ="btn_gauche">
-                <input type="hidden" name="idligne" value="<%=Ligne.getId()%>"/>
+                <input type="hidden" name="idligne" value="<%=ligne.getId()%>"/>
                 <input type="hidden" name="action" value="ModifierLigne"/>
                 <input type="submit" value="Enregistrer"/>
             </div>

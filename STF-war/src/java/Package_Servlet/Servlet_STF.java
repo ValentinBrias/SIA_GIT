@@ -334,6 +334,7 @@ public class Servlet_STF extends HttpServlet {
             for (String id:tabgare){
                 Long idgare = Long.valueOf(id);
                 Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+                listeG.add(g);
             }
             int num = Integer.parseInt(numLigne);
             Long idgd = Long.valueOf(garedep);
