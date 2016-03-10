@@ -7,10 +7,14 @@ package Package_Servlet;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -152,7 +156,10 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/HoraireCreer.jsp";
                 doActionAfficherAjoutHoraire(request, response);
             }
-                    
+            else if (act.equals("AjouterHoraire")) {
+                jspClient = "/Horaires.jsp";
+                doActionAjouterHoraire(request, response);
+            }        
                     
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -472,6 +479,35 @@ public class Servlet_STF extends HttpServlet {
         Long idligne = Long.valueOf(ligne);
         Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
         request.setAttribute("ligne", l);
+        request.setAttribute("message", "");
     }
     
+    protected void doActionAjouterHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idg = request.getParameter("gare");
+        Long idgare = Long.valueOf(idg);
+        String idl = request.getParameter("ligne");
+        Long idligne = Long.valueOf(idl); 
+        String horaireS = request.getParameter("horaire");
+        String message;
+        
+        
+        if (horaireS.trim().isEmpty()) {
+            message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
+        } else {
+            DateFormat heure = new SimpleDateFormat("HH:mm");
+            Date horaire = new Date();
+            try {
+                horaire = heure.parse(horaireS);
+            } catch (ParseException ex) {
+                Logger.getLogger(Servlet_STF.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Ligne ligne = sessionAdministrateur.RechercherLigneParId(idligne);
+            Gare gare = sessionAdministrateur.RechercherGareParId(idgare);
+            sessionAdministrateur.CreerHoraire(horaire, gare, ligne);
+            message = "<div class='msg_success'>La gare est créée avec succès !</div>";
+        }
+        request.setAttribute("message", message);
+        List<Gare> list = sessionAdministrateur.RetournerGares();
+        request.setAttribute("listegares", list);
+    }
 }

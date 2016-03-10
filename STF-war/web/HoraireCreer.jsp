@@ -20,7 +20,7 @@
         <h1 id="h1">Horaire > Ajouter</h1>
         <br><br>
         <%Ligne l = ligne;%>
-        <h2>Ligne n°<%l.getNumLigne();%></h2>
+        <h2>Ligne n°<%=l.getNumLigne()%></h2>
         <div class='text'>
             <%
                 String attribut = (String) request.getAttribute("message");
@@ -35,13 +35,14 @@
                             for (Gare g : lesGares) {%>
                 <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                 <%}%></select>
-                Heure : <input type="Date" name="horaire">
+                Heure : <input type="date" name="horaire">
                 
         </div>
             <br>
             <br>
             <div class ="btn_gauche">
                 <input type="hidden" name="action" value="AjouterHoraire">
+                <input type="hidden" name="ligne" value="<%=l.getId()%>">
 
                 <input type="submit" value="Valider"/>
                 <input type="reset" value="Remettre à zéro"/>
