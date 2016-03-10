@@ -4,6 +4,8 @@
     Author     : 3092790
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="package_entite.Horaire"%>
 <%@page import="package_entite.Ligne"%>
 <%@page import="java.util.List"%>
@@ -33,13 +35,16 @@
                 <th>horaires</th>
             </tr>
             <%
+                DateFormat heure = new SimpleDateFormat("HH:mm");
                 List<Gare> lesGares=ligne.getLesGares();
                 for(Gare g:lesGares){%>
                 <tr>
                     <td Width=15%><%=g.getNomGare()%></td>
-                    <td Width=15%><%for(Horaire h: g.getLesHoraires()){%><%=h.getDateHoraire()%> / <%}%></td>
+                    <td Width=15%><%for(Horaire h: g.getLesHoraires()){%><%=heure.format(h.getDateHoraire())%> / <%}%></td>
+                    
                     <td align='center'> <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationHoraire"><button>Modifier</button></a></td>
                     <td align='center'><a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionHoraire"><button> Supprimer</button></a></td>
+                    
                 </tr><%}%>
         </TABLE>
         <a href="Servlet_STF?action=CreationHoraire">Ajouter un horaire</a>
