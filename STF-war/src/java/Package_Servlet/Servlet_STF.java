@@ -474,14 +474,6 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("ligne", ligne);
     }
     
-    protected void doActionAfficherAjoutHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ligne = request.getParameter("ligne"); 
-        Long idligne = Long.valueOf(ligne);
-        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
-        request.setAttribute("ligne", l);
-        request.setAttribute("message", "");
-    }
-    
     protected void doActionAfficherTarifs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("IdLigne");
         Long idligne = Long.valueOf(id); 
