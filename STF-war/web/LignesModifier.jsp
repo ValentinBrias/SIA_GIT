@@ -50,7 +50,7 @@
                 <tr><!--Liste des gares liés à la ligne-->
                     <% List<Gare> lesG = ligne.getLesGares();%>
                     <td>Gares</td><td><%for (Gare g : lesG) {%><%=g.getNomGare()%><br><%}%></td> 
-                    <td>Nouvelle lignes : *<br>
+                    <td id="tdlistgare">Nouvelle lignes : *<br>
                         <%List<Gare> toutesgares = listegares;
                         for (Gare g : toutesgares) {%>
                         <!--Checkbox pour toutes les gares dispos-->
