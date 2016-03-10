@@ -10,7 +10,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import package_entite.DistanceGare;
-import package_entite.DistanceGareFacadeLocal;
+import package_facades.DistanceGareFacadeLocal;
 import package_entite.Gare;
 import package_entite.Horaire;
 import package_entite.Ligne;
