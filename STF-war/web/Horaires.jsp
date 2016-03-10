@@ -47,7 +47,7 @@
                     
                 </tr><%}%>
         </TABLE>
-        <a href="Servlet_STF?action=CreationHoraire">Ajouter un horaire</a>
+        <a href="Servlet_STF?ligne=<%=ligne.getId()%>&action=CreationHoraire">Ajouter un horaire pour cette ligne</a>
     </body>
     </body>
 </html>
