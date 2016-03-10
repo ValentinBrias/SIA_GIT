@@ -26,6 +26,14 @@ import javax.persistence.OneToMany;
 public class Ligne implements Serializable {
     @OneToMany(mappedBy = "laLigne")
     private List<DistanceGare> lesDistanceGares;
+
+    public List<DistanceGare> getLesDistanceGares() {
+        return lesDistanceGares;
+    }
+
+    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
+        this.lesDistanceGares = lesDistanceGares;
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

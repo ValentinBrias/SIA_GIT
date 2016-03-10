@@ -152,7 +152,10 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/HoraireCreer.jsp";
                 doActionAfficherAjoutHoraire(request, response);
             }
-                    
+            else if (act.equals("LigneTarif")) {
+                jspClient = "/Tarifaire.jsp";
+                doActionAfficherTarifs(request, response);
+            }        
                     
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -474,4 +477,12 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("ligne", l);
     }
     
+    protected void doActionAfficherTarifs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("IdLigne");
+        Long idligne = Long.valueOf(id); 
+        Ligne ligne = sessionAdministrateur.RechercherLigneParId(idligne);
+        String message = "Liste des tarif pour la ligne n°"+ligne.getNumLigne();
+        request.setAttribute("message", message);
+        request.setAttribute("ligne", ligne);
+    }
 }

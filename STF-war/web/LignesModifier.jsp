@@ -21,7 +21,7 @@
         <h1 id="h1">Lignes > Modifier</h1>
         <br><br>
         <form method="get" action="Servlet_STF">
-            <TABLE id="TableModif">
+            <TABLE id="tableModif">
                 <tr id="allTr">
                     <th></th><th>Données actuelles</th><th>Nouvelles données</th>
                 </tr>

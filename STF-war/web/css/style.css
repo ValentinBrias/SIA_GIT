@@ -10,30 +10,31 @@
     margin-left:10%;
 }
 
-#allTable
+#allTable tr:nth-child(even) {background: #FFF}
+#allTable tr:nth-child(odd) {background: #CCC}
+
+#allTable, #tableModif, #tableTarif
 {
     margin: auto;
     text-align: center;
     border-collapse:collapse;
+    border: 1px solid black;
+}
+
+#allTable
+{
     width: 80%;
 }
 
-#TableModif
+#tableModif, #tableTarif
 {
-    margin: auto;
-    text-align: center;
-    border-collapse:collapse;
     width: 30%;
 }
 
-#allTable td
+#allTable td, #tableModif td, #tableTarif td
 {
-    border: 1px solid black;
-}
-
-#TableModif td
-{
-    border: 1px solid black;
+    //border-left: 1px solid black;
+    
 }
 
 #tdlistgare
@@ -45,8 +46,9 @@
 
 #allTr
 {
-   background-color: #C0C0C0;
+   border: 1px solid black;
 }
+
 
 .btn_gauche
 {

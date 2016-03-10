@@ -57,26 +57,11 @@ public class Prix_Kilometre implements Serializable {
         return "package_entite.Prix_Kilometre[ id=" + id + " ]";
     }
     private double prixKilometre;
-    
-    @OneToMany(mappedBy = "lePrixKm")
-    private List<DistanceGare> lesDistanceGares;
-
-    public List<DistanceGare> getLesDistanceGares() {
-        return lesDistanceGares;
-    }
-
-    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
-        this.lesDistanceGares = lesDistanceGares;
-    }
 
     public double getPrixKilometre() {
-        double prixKm = 0;
-        for (DistanceGare d:lesDistanceGares){
-            prixKm += d.getDistanceGare();
-        }
-        return prixKm;
+        return 0.15;
     }
-
+    
     public void setPrixKilometre(double prixKilometre) {
         this.prixKilometre = prixKilometre;
     }

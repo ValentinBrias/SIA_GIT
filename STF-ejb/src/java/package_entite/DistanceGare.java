@@ -117,7 +117,15 @@ public class DistanceGare implements Serializable {
     public void setLaLigne(Ligne laLigne) {
         this.laLigne = laLigne;
     }
+    
+    
 
-    @ManyToOne
-    private Prix_Kilometre lePrixKm;
+    public double compareTo (double distance1, double distance2) {
+        DistanceGare d = new DistanceGare();
+        distance1 = d.getDistanceGare();
+        distance2 = d.getDistanceGare();
+        if (distance1 > distance2) {return -1;}
+        else if (distance1 == distance2) {return 0;}
+        else {return 1;}
+    }
 }

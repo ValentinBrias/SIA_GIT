@@ -25,8 +25,17 @@ import javax.persistence.OneToMany;
 public class Gare implements Serializable {
     @OneToMany(mappedBy = "laGare")
     private List<DistanceGare> lesDistanceGares;
+    
     @OneToMany(mappedBy = "gareArrivee")
     private List<Ligne> lesLignesArrivee;
+
+    public List<DistanceGare> getLesDistanceGares() {
+        return lesDistanceGares;
+    }
+    
+    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
+        this.lesDistanceGares = lesDistanceGares;
+    }
 
     public List<Ligne> getLesLignesArrivee() {
         return lesLignesArrivee;
@@ -64,6 +73,7 @@ public class Gare implements Serializable {
     public void setLesLignesDepart(List<Ligne> lesLignesDepart) {
         this.lesLignesDepart = lesLignesDepart;
     }
+    
     @OneToMany(mappedBy = "gareDepart")
     private List<Ligne> lesLignesDepart;
     @OneToMany(mappedBy = "gareArrivee")
