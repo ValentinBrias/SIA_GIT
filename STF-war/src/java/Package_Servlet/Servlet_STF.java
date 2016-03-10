@@ -82,6 +82,7 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Lignes.jsp";
                 List<Ligne> list = sessionAdministrateur.RetournerLignes();
                 request.setAttribute("listelignes", list);
+                request.setAttribute("message", "");
             } 
             else if (act.equals("LigneAjouter")) {
                 jspClient = "/LignesAjouter.jsp";
@@ -96,11 +97,12 @@ public class Servlet_STF extends HttpServlet {
                     List<Ligne> list = sessionAdministrateur.RetournerLignes();
                     request.setAttribute("listelignes", list);
                 } else if (i == 2) {
-                    jspClient = "/LignesAjouter.jsp";   
+                    jspClient = "/LignesAjouter.jsp";
                     List<Gare> list = sessionAdministrateur.RetournerGares();
                     request.setAttribute("listegares", list);
+                    request.setAttribute("message", "");
                 }
-            } 
+            }
             else if (act.equals("LigneModification")) {
                 jspClient = "/LignesModifier.jsp";
                 doActionAfficherModifLigne(request, response);
@@ -365,6 +367,8 @@ public class Servlet_STF extends HttpServlet {
             Long idga = Long.valueOf(garearr);
             Gare gad = sessionAdministrateur.RechercherGareParId(idgd);
             Gare elm = sessionAdministrateur.RechercherGareParId(idga);
+            listeG.add(gad);
+            listeG.add(elm);
             sessionAdministrateur.CreerLigne(num, gad, elm, listeG);
             message = "<div class='msg_success'>La ligne est créée avec succès !</div>";
             i = 1;
