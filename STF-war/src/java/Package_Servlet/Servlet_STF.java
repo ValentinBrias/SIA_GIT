@@ -327,8 +327,12 @@ public class Servlet_STF extends HttpServlet {
         String tabgare[] = request.getParameterValues("g"); // dans tabgare[] on récupère une liste d'id de gare, formats String
         String message;
 
+         
         if (garedep.isEmpty() || garearr.isEmpty() || numLigne.isEmpty() || tabgare==null) {
             message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
+        } 
+        else if (garedep.equals(garearr)){
+            message = "<div class='msg_error'>Erreur - La gare d'arrivée ne peut pas être la même que la gare de départ</div>";
         } else {
             List <Gare> listeG = new ArrayList<Gare>();
             for (String id:tabgare){
@@ -370,14 +374,16 @@ public class Servlet_STF extends HttpServlet {
         String garearr = request.getParameter("GareArrivee");
         Long idga = Long.valueOf(garearr);
         String numLigne = request.getParameter("NumLigne");
-        int num = Integer.parseInt(numLigne);
+        int num = 0;
         String tabgare[] = request.getParameterValues("gares");
         List <Gare> listeG = new ArrayList<Gare>();
         
-        if (numLigne.trim().isEmpty()){
+        if (numLigne.trim().isEmpty()) {
             num = l.getNumLigne();
+        } else {
+            num = Integer.parseInt(numLigne);
         }
-        if (garedep.trim().isEmpty()){
+            if (garedep.trim().isEmpty()){
             garedep = l.getGareDepart().getNomGare();
         }
         if (garearr.trim().isEmpty()){

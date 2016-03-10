@@ -35,6 +35,8 @@
                             for (Gare g : lesGares) {%>
                 <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                 <%}%></select>
+                
+                <br><br>
                 Gare (Veuillez sélectionner au moins une gare):<br>
                 <!--Checkbox des gares (plusieurs choix possibles)-->
                         <%

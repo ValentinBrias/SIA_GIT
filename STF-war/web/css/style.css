@@ -52,7 +52,7 @@
 
 /* CSS des messages : succès, erreur etc... */
 .msg_info, .msg_success, .msg_warning, .msg_error {
-    width: 30%;
+    width: 35%;
     padding:5px;
 }
 .msg_info {
