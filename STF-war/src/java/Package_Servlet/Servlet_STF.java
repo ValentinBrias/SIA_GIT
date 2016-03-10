@@ -7,10 +7,14 @@ package Package_Servlet;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -475,6 +479,7 @@ public class Servlet_STF extends HttpServlet {
         Long idligne = Long.valueOf(ligne);
         Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
         request.setAttribute("ligne", l);
+        request.setAttribute("message", "");
     }
     
     protected void doActionAfficherTarifs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
