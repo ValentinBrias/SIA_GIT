@@ -64,7 +64,7 @@
                     <td Width=15%><%=a.getGareDepart().getNomGare()%></td>
                     <td Width=10%><%=a.getGareArrivee().getNomGare()%></td>
                     <td id="tdlistgare" Width=10%><%for(Gare g:lesGa){%><li><%=g.getNomGare()%><br><%}%></li></td>
-                    <td Width=10%><%=a.getNbGare()%></td>
+                    <td Width=10%><%=lesGa.size()%></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
                     <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
                     <td id="ligneTDModifier" Width=10%> 

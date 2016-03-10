@@ -81,7 +81,7 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
     public List<Ligne> RetournerLignes() {
         List<Ligne> listeL;
         Ligne l = null;
-        String txt = "SELECT l FROM Ligne as l";
+        String txt = "SELECT l FROM Ligne as l order by l.numLigne ASC";
         Query req = getEntityManager().createQuery(txt);
         listeL = req.getResultList();
         return listeL;
