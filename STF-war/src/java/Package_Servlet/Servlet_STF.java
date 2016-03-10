@@ -431,8 +431,9 @@ public class Servlet_STF extends HttpServlet {
         }
         Gare gad = sessionAdministrateur.RechercherGareParId(idgd);
         Gare elm = sessionAdministrateur.RechercherGareParId(idga);
+        listeG.add(gad);
+        listeG.add(elm);
         sessionAdministrateur.ModifierLigne(idligne, num, gad, elm, listeG );
-
         String message = "<div class='msg_success'>Ligne modifiée avec succès !</div>";
         request.setAttribute("message", message);
 
