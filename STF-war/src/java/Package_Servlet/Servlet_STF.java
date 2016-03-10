@@ -7,6 +7,7 @@ package Package_Servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -88,8 +89,17 @@ public class Servlet_STF extends HttpServlet {
                 request.setAttribute("listegares", list);
             } 
             else if (act.equals("AjouterLigne")) {
-                jspClient = "/Lignes.jsp";
-                doActionAjouterLigne(request, response);
+                int i;
+                i = doActionAjouterLigne(request, response);
+                if (i == 1) {
+                    jspClient = "/Lignes.jsp";
+                    List<Ligne> list = sessionAdministrateur.RetournerLignes();
+                    request.setAttribute("listelignes", list);
+                } else if (i == 2) {
+                    jspClient = "/LignesAjouter.jsp";   
+                    List<Gare> list = sessionAdministrateur.RetournerGares();
+                    request.setAttribute("listegares", list);
+                }
             } 
             else if (act.equals("LigneModification")) {
                 jspClient = "/LignesModifier.jsp";
@@ -320,20 +330,30 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("listelignes", liste);
     } 
     
-    protected void doActionAjouterLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected int doActionAjouterLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String garedep = request.getParameter("GareDepart");
         String garearr = request.getParameter("GareArrivee");
         String numLigne = request.getParameter("NumLigne");
         String tabgare[] = request.getParameterValues("g"); // dans tabgare[] on récupère une liste d'id de gare, formats String
         String message;
-
-         
+        
+        int i = 0;
+        
         if (garedep.isEmpty() || garearr.isEmpty() || numLigne.isEmpty() || tabgare==null) {
             message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
-        } 
-        else if (garedep.equals(garearr)){
-            message = "<div class='msg_error'>Erreur - La gare d'arrivée ne peut pas être la même que la gare de départ</div>";
+            i = 2;
         } else {
+            List<String> liste = new ArrayList<String>(Arrays.asList(tabgare));
+            if (garedep.equals(garearr)){
+            message = "<div class='msg_error'>Erreur - La gare d'arrivée ne peut pas être la même que la gare de départ</div>";
+            i = 2;
+            
+        }
+        else if (liste.contains(garearr) || liste.contains(garedep)){
+            message = "<div class='msg_error'>Erreur - On ne peut pas sélectionner la gare de départ et/ou la gare d'arrivée dans la liste</div>";
+            i = 2;
+        }
+        else {
             List <Gare> listeG = new ArrayList<Gare>();
             for (String id:tabgare){
                 Long idgare = Long.valueOf(id);
@@ -347,10 +367,15 @@ public class Servlet_STF extends HttpServlet {
             Gare elm = sessionAdministrateur.RechercherGareParId(idga);
             sessionAdministrateur.CreerLigne(num, gad, elm, listeG);
             message = "<div class='msg_success'>La ligne est créée avec succès !</div>";
+            i = 1;
         }
+        }
+        
         request.setAttribute("message", message);
         List<Ligne> list = sessionAdministrateur.RetournerLignes();
         request.setAttribute("listelignes", list);
+        
+        return i;
     } 
     
     protected void doActionAfficherModifLigne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

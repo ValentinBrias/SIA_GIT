@@ -20,6 +20,11 @@
         <h1 id="h1">Lignes > Ajouter</h1>
         <br><br>
         <div class='text'>
+            <%
+                String attribut = (String) request.getAttribute("message");
+                out.println(attribut);
+            %>
+            <br><br>
             <form method="get" action="Servlet_STF">
                 N° de ligne : <input type="text" name="NumLigne" placeholder="Numéro de ligne" />
                 Départ : <select name="GareDepart">
@@ -37,7 +42,7 @@
                 <%}%></select>
                 
                 <br><br>
-                Gare (Veuillez sélectionner au moins une gare):<br>
+                Liste des gares (Veuillez sélectionner au moins une gare):<br>
                 <!--Checkbox des gares (plusieurs choix possibles)-->
                         <%
                             for (Gare g : lesGares) {%>
