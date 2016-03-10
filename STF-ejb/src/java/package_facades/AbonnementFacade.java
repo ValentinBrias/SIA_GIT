@@ -12,7 +12,7 @@ import package_entite.Abonnement;
 
 /**
  *
- * @author 3092790
+ * @author 3099709
  */
 @Stateless
 public class AbonnementFacade extends AbstractFacade<Abonnement> implements AbonnementFacadeLocal {

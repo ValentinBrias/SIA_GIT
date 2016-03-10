@@ -11,7 +11,7 @@ import package_entite.Abonnement;
 
 /**
  *
- * @author 3092790
+ * @author 3099709
  */
 @Local
 public interface AbonnementFacadeLocal {
