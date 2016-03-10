@@ -152,10 +152,6 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Horaires.jsp";
                 doActionAfficherHoraires(request, response);
             }
-            else if (act.equals("CreationHoraire")) {
-                jspClient = "/HoraireCreer.jsp";
-                doActionAfficherAjoutHoraire(request, response);
-            }
     
                     
             RequestDispatcher Rd;
@@ -469,14 +465,6 @@ public class Servlet_STF extends HttpServlet {
         String message = "Liste des horaires pour la ligne n°"+ligne.getNumLigne();
         request.setAttribute("message", message);
         request.setAttribute("ligne", ligne);
-    }
-    
-    protected void doActionAfficherAjoutHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ligne = request.getParameter("ligne"); 
-        Long idligne = Long.valueOf(ligne);
-        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
-        request.setAttribute("ligne", l);
-        request.setAttribute("message", "");
     }
     
 }
