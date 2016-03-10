@@ -29,5 +29,7 @@ public interface AbonnementFacadeLocal {
     List<Abonnement> findRange(int[] range);
 
     int count();
+
+    List RetournerAbonnement();
     
 }

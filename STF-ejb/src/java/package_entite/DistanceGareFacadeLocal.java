@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package package_facades;
+package package_entite;
 
 import java.util.List;
 import javax.ejb.Local;
-import package_entite.DistanceGare;
-import package_entite.Gare;
-import package_entite.Ligne;
 
 /**
  *

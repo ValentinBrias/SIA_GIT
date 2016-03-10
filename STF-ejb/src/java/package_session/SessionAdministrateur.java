@@ -9,11 +9,13 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import package_entite.Abonnement;
 import package_entite.DistanceGare;
-import package_facades.DistanceGareFacadeLocal;
+import package_entite.DistanceGareFacadeLocal;
 import package_entite.Gare;
 import package_entite.Horaire;
 import package_entite.Ligne;
+import package_facades.AbonnementFacadeLocal;
 import package_facades.GareFacadeLocal;
 import package_facades.HoraireFacadeLocal;
 import package_facades.LigneFacadeLocal;
@@ -24,6 +26,8 @@ import package_facades.LigneFacadeLocal;
  */
 @Stateless
 public class SessionAdministrateur implements SessionAdministrateurLocal {
+    @EJB
+    private AbonnementFacadeLocal abonnementFacade;
     @EJB
     private DistanceGareFacadeLocal distanceGareFacade;
     @EJB
@@ -155,6 +159,12 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     public List <DistanceGare> RetournerDistance() {
         List <DistanceGare> listeD = distanceGareFacade.RetournerDistance();
         return listeD;
+    }
+
+    @Override
+    public List<Abonnement> RetournerAbonnement() {
+        List<Abonnement> listeA = abonnementFacade.RetournerAbonnement();
+        return listeA;
     }
     
     

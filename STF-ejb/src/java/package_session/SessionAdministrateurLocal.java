@@ -63,5 +63,7 @@ public interface SessionAdministrateurLocal {
     DistanceGare RechercherDistanceParId(long id);
 
     List RetournerDistance();
+
+    List RetournerAbonnement();
     
 }

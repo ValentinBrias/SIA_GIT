@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import package_entite.Abonnement;
 import package_entite.Gare;
 import package_entite.Horaire;
 import package_entite.Ligne;
@@ -155,7 +156,13 @@ public class Servlet_STF extends HttpServlet {
             else if (act.equals("LigneTarif")) {
                 jspClient = "/Tarifaire.jsp";
                 doActionAfficherTarifs(request, response);
-            }        
+            }
+            else if (act.equals("AfficherAbonnement")) {
+                jspClient = "/Abonnement.jsp";
+                List<Abonnement> list = sessionAdministrateur.RetournerAbonnement();
+                request.setAttribute("listeabonnements", list);
+                request.setAttribute("message", "");
+            } 
                     
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);

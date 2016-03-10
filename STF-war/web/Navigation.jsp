@@ -17,7 +17,7 @@
             <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
             <li><a href="Servlet_STF?action=AfficherLignes">Lignes</a></li>
             <li><a href="Servlet_STF?action=AfficherGares">Gares</a></li>
-            <li><a href="Abonnements.jsp">Abonnements</a></li>
+            <li><a href="Servlet_STF?action=AfficherAbonnement">Abonnements</a></li>
         </ul>
         <br><br>
     </body>

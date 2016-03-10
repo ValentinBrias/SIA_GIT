@@ -4,22 +4,44 @@
     Author     : 3099709
 --%>
 
+<%@page import="package_entite.Abonnement"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:useBean id="abo" scope="request" class="Abonnement"></jsp:useBean>
+        <jsp:useBean id="listeabonnements" scope="request" class="java.util.List"></jsp:useBean>
         <title>Abonnement</title>
+        <!-- Inclusion du menu par la jsp Navigation -->
+        <%@ include file="Navigation.jsp" %>
     </head>
     <body>
-        <ul>
-            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
-            <li><a href="Lignes.jsp">Lignes</a></li>
-            <li><a href="Gares.jsp">Gares</a></li>
-            <li><a href="Abonnements.jsp">Abonnements</a></li>
-        </ul>
+       
+        <h1 id="h1">Abonnement</h1>
         <br><br>
-        <h1>Abonnements</h1>
+        
+        <div class ="text">
+            <%
+                String attribut = (String) request.getAttribute("message");
+                out.println(attribut);
+            %>
+        </div>
+        
         <br><br>
+        
+        <!-- Affichage de la liste de toutes les lignes -->
+        <TABLE id="tableTarif">
+
+            <tr id="allTr">
+                <th>Nom</th>
+                <th>Remise</th>
+            </tr>
+            <tr>
+                <td width="10%"><%=abo.getNomAbonnement()%></td>
+                <td width="10%"><%=abo.getTauxReduction()%></td>
+            </tr>
+        </TABLE>
     </body>
 </html>
