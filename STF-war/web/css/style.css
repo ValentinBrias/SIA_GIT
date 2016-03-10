@@ -14,7 +14,6 @@
 {
     margin: auto;
     text-align: center;
-    border: 1px solid black;
     border-collapse:collapse;
     width: 80%;
 }
@@ -23,9 +22,25 @@
 {
     margin: auto;
     text-align: center;
-    border: 1px solid black;
     border-collapse:collapse;
     width: 30%;
+}
+
+#allTable td
+{
+    border: 1px solid black;
+}
+
+#TableModif td
+{
+    border: 1px solid black;
+}
+
+#tdlistgare
+{
+    padding-left: 20px;
+    text-align: left;
+    
 }
 
 #allTr
