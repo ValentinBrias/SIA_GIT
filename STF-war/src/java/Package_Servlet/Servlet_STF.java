@@ -152,10 +152,6 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Horaires.jsp";
                 doActionAfficherHoraires(request, response);
             }
-            else if (act.equals("CreationHoraire")) {
-                jspClient = "/HoraireCreer.jsp";
-                doActionAfficherAjoutHoraire(request, response);
-            }
             else if (act.equals("LigneTarif")) {
                 jspClient = "/Tarifaire.jsp";
                 doActionAfficherTarifs(request, response);
