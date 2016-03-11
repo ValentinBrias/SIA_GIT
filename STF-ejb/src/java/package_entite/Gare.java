@@ -6,6 +6,7 @@
 package package_entite;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Query;
 
 /**
  *
@@ -180,6 +182,15 @@ public class Gare implements Serializable {
         this.adresse = adresse;
     }
 
-
-
+    public List<Horaire> GetHorairesParLigne (Ligne ligne){
+        List<Horaire> tousLesHoraires = this.getLesHoraires();
+        List<Horaire> lesBonsHoraires=new ArrayList();
+        for (Horaire h : tousLesHoraires){
+            if (h.getLaLigne()==ligne){
+                
+                lesBonsHoraires.add(h);
+            }
+        }
+        return lesBonsHoraires;
+    }
 }
