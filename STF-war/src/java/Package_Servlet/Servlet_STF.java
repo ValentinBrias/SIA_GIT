@@ -162,7 +162,15 @@ public class Servlet_STF extends HttpServlet {
                 List<Abonnement> list = sessionAdministrateur.RetournerAbonnement();
                 request.setAttribute("listeabonnements", list);
                 request.setAttribute("message", "");
-            } 
+            }
+            else if (act.equals("CreationHoraire")) {
+                jspClient = "/HoraireCreer.jsp";
+                doActionAfficherCreationHoraire(request, response);
+            }
+            else if (act.equals("AjouterHoraire")) {
+                jspClient = "/Horaires.jsp";
+                doActionCreationHoraire(request, response);
+            }
                     
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -487,5 +495,48 @@ public class Servlet_STF extends HttpServlet {
         String message = "Liste des tarif pour la ligne n°"+ligne.getNumLigne();
         request.setAttribute("message", message);
         request.setAttribute("ligne", ligne);
+    }
+    
+    protected void doActionAfficherCreationHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String gare = request.getParameter("gare");
+        Long idgare = Long.valueOf(gare);
+        Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+        request.setAttribute("gare", g); 
+
+        String ligne = request.getParameter("ligne");
+        Long idligne = Long.valueOf(ligne);
+        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+        request.setAttribute("ligne", l); 
+        
+        String txt = "Ajout d'un nouvel horaire pour la Ligne n°"+l.getId()+" et pour la Gare "+g.getNomGare();
+        request.setAttribute("message", txt); 
+    }
+    
+    protected void doActionCreationHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String gare = request.getParameter("gare");
+        Long idgare = Long.valueOf(gare);
+        Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+        request.setAttribute("gare", g); 
+
+        String ligne = request.getParameter("ligne");
+        Long idligne = Long.valueOf(ligne);
+        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+        request.setAttribute("ligne", l);
+        
+        String ho = request.getParameter("horaire");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date horaire = new Date();
+        try {
+            horaire = format.parse(ho);
+        } catch (ParseException ex) {
+            Logger.getLogger(Servlet_STF.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        sessionAdministrateur.CreerHoraire(horaire, g, l);
+        
+        String txt = "<div class='msg_success'>Horaire ajouté avec succès</div>";
+        request.setAttribute("message", txt); 
+        
+        request.setAttribute("ligne", l); 
     }
 }
