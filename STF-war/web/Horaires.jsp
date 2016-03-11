@@ -43,7 +43,7 @@
                 for(Gare g:lesGares){%>
                 <tr>
                     <td Width=15%><%=g.getNomGare()%></td>
-                    <td Width=75%><%for(Horaire h: g.getLesHoraires()){%><%=heure.format(h.getDateHoraire())%> / <%}%></td>
+                    <td Width=75%><%for(Horaire h: g.GetHorairesParLigne(ligne)){%><%=heure.format(h.getDateHoraire())%> / <%}%></td>
                     
                     <td align='center'> <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationHoraire"><button>Modifier</button></a></td>
                     <td align='center'><a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionHoraire"><button> Supprimer</button></a></td>

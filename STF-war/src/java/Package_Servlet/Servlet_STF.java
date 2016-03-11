@@ -158,7 +158,7 @@ public class Servlet_STF extends HttpServlet {
                 doActionAfficherTarifs(request, response);
             }
             else if (act.equals("AfficherAbonnement")) {
-                jspClient = "/Abonnement.jsp";
+                jspClient = "/Abonnements.jsp";
                 List<Abonnement> list = sessionAdministrateur.RetournerAbonnement();
                 request.setAttribute("listeabonnements", list);
                 request.setAttribute("message", "");
@@ -472,9 +472,12 @@ public class Servlet_STF extends HttpServlet {
         String id = request.getParameter("IdLigne");
         Long idligne = Long.valueOf(id); 
         Ligne ligne = sessionAdministrateur.RechercherLigneParId(idligne);
+        List<Horaire> horaires = sessionAdministrateur.RechercherHoraireParLigne(ligne);
         String message = "Liste des horaires pour la ligne n°"+ligne.getNumLigne();
         request.setAttribute("message", message);
         request.setAttribute("ligne", ligne);
+        
+        request.setAttribute("listehoraires", horaires);
     }
     
     protected void doActionAfficherTarifs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
