@@ -45,6 +45,7 @@
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=75%><%for(Horaire h: g.GetHorairesParLigne(ligne)){%><%=heure.format(h.getDateHoraire())%> / <%}%></td>
                     <td align='center'> <a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=CreationHoraire"><button>Ajouter</button></a></td>
+                    <td align='center'><a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=SuppressionHoraire"><button> Supprimer</button></a></td>
                     
                 </tr><%}%>
         </TABLE>

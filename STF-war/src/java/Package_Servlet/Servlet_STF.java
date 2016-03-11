@@ -171,6 +171,14 @@ public class Servlet_STF extends HttpServlet {
                 jspClient = "/Horaires.jsp";
                 doActionCreationHoraire(request, response);
             }
+            else if (act.equals("SuppressionHoraire")) {
+                jspClient = "/SupprimerHoraire.jsp";
+                doActionAfficherSupprimerHoraire(request, response);
+            }
+            else if (act.equals("SupprimerHoraire")) {
+                jspClient = "/Horaires.jsp";
+                doActionSupprimerHoraire(request, response);
+            }
                     
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -508,7 +516,7 @@ public class Servlet_STF extends HttpServlet {
         Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
         request.setAttribute("ligne", l); 
         
-        String txt = "Ajout d'un nouvel horaire pour la Ligne n°"+l.getId()+" et pour la Gare "+g.getNomGare();
+        String txt = "Ajout d'un nouvel horaire pour la Ligne n°"+l.getNumLigne()+" et pour la Gare "+g.getNomGare();
         request.setAttribute("message", txt); 
     }
     
@@ -538,5 +546,40 @@ public class Servlet_STF extends HttpServlet {
         request.setAttribute("message", txt); 
         
         request.setAttribute("ligne", l); 
+    }
+    
+    protected void doActionAfficherSupprimerHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String gare = request.getParameter("gare");
+        Long idgare = Long.valueOf(gare);
+        Gare g = sessionAdministrateur.RechercherGareParId(idgare);
+        request.setAttribute("gare", g); 
+
+        String ligne = request.getParameter("ligne");
+        Long idligne = Long.valueOf(ligne);
+        Ligne l = sessionAdministrateur.RechercherLigneParId(idligne);
+        request.setAttribute("ligne", l); 
+        
+        String txt = "Supprimer un ou plusieurs horaire pour la Ligne n°"+l.getNumLigne()+" et pour la Gare "+g.getNomGare();
+        request.setAttribute("message", txt); 
+        
+        
+    }
+    
+    protected void doActionSupprimerHoraire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String message;
+        String id[] = request.getParameterValues("suppr");
+        String idli = request.getParameter("ligne");
+        Long idligne = Long.valueOf(idli);
+        Ligne ligne = sessionAdministrateur.RechercherLigneParId(idligne);
+        if(id!=null){
+            for (String idh:id){
+                Long idhoraire = Long.valueOf(idh);
+                sessionAdministrateur.SupprimerHoraire(idhoraire);
+            }
+        }
+        message = "<div class='msg_success'>Horaire supprimé avec succès!</div>";
+
+        request.setAttribute("message", message);
+        request.setAttribute("ligne", ligne);
     }
 }
