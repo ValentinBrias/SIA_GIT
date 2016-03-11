@@ -186,8 +186,7 @@ public class Gare implements Serializable {
         List<Horaire> tousLesHoraires = this.getLesHoraires();
         List<Horaire> lesBonsHoraires=new ArrayList();
         for (Horaire h : tousLesHoraires){
-            if (h.getLaLigne()==ligne){
-                
+            if (h.getLaLigne().getId().equals(ligne.getId())){
                 lesBonsHoraires.add(h);
             }
         }
