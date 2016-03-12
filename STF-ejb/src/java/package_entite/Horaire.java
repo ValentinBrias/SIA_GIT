@@ -80,7 +80,7 @@ public class Horaire implements Serializable {
         return "package_entite.Horaire[ id=" + id + " ]";
     }
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private java.util.Date dateHoraire;
 
     /**
