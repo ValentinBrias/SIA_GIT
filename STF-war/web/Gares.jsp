@@ -32,25 +32,24 @@
         <br><br>
         
         
-        <TABLE id="allTable">
-            <tr id="allTr">
+        <TABLE id="tableAffich">
+            <tr id="trTitre">
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Adresse</th>
                 <th>Lignes</th>
+                <th>Sélectionner</th>
             </tr>
             <%
                 List<Gare> lesGares=listegares;
                 for(Gare g:lesGares){%>
-                <tr>
+                <tr id="trContenu">
                     <td Width=15%><%=g.getId()%></td>
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=15%><%=g.getAdresse()%></td>
                     <td Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne()%> / <%}%></td>
-                    <td id="ligneTDModifier" Width=10%>
+                    <td Width=15%>
                         <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare"><button>Modifier</button></a>
-                    </td>
-                    <td id="ligneTDModifier" Width=10%>
                         <a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button> Supprimer</button></a>
                     </td>
                 </tr><%}%>

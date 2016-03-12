@@ -16,7 +16,6 @@
         <title>Lignes</title>
     </head>
     <body>
-        
         <!-- Inclusion du menu par la jsp Navigation -->
         <%@ include file="Navigation.jsp" %>
 
@@ -43,8 +42,8 @@
         
         
         <!-- Affichage de la liste de toutes les lignes -->
-        <TABLE id="allTable">
-            <tr id="allTr">
+        <TABLE id="tableAffich">
+            <tr id="trTitre">
                 <th>Numéro de ligne</th>
                 <th>Départ</th>
                 <th>Arrivée</th>
@@ -59,15 +58,15 @@
                 for(Ligne a:lesLig){
                 List <Gare> lesGa = a.getLesGares();
             %>
-                <tr>
+                <tr id="trContenu">
                     <td Width=5%><%=a.getNumLigne()%></td>
                     <td Width=15%><%=a.getGareDepart().getNomGare()%></td>
                     <td Width=10%><%=a.getGareArrivee().getNomGare()%></td>
                     <td id="tdlistgare" Width=10%><%for(Gare g:lesGa){%><li><%=g.getNomGare()%><br><%}%></li></td>
                     <td Width=10%><%=lesGa.size()%></td>
-                    <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
-                    <td Width=10%><a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
-                    <td id="ligneTDModifier" Width=10%> 
+                    <td Width=10%><a class="aFiche" href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
+                    <td Width=10%><a class="aFiche" href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
+                    <td Width=15%> 
                         <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification"><button>Modifier</button></a>
                         <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression"><button>Supprimer</button></a>
                     </td>
@@ -75,8 +74,7 @@
         </TABLE>
         
         <!-- Bouton ajouter -->
-        <div class ="btn_gauche">
-            <a href="Servlet_STF?action=LigneAjouter"><button>Ajouter</button></a>
-        </div>
+            <a href="Servlet_STF?action=LigneAjouter"><button id="btn_gauche">Ajouter</button></a>
+
     </body>
 </html>

@@ -1,6 +1,60 @@
 /* Stylesheet / CSS */
 
-/* Body */
+/* --------- Header ---------*/
+/* Logo */
+#logoMenu
+{
+    display: block; /*Mettre le logo en bloc, permet de l'aligner et de le redimensionner */
+    margin-right:5%; /* Margin est la marge entre le logo et la fenêtre */
+    margin-left: auto;
+    border-collapse:collapse; /* collapse = sans bordure */
+    width: 150px; /* Largeur */
+    height: 100px; /* Longueur */
+}
+/* --------- FIN Header ---------*/
+
+/* --------- Menu ---------*/
+#navigation {
+    padding: 0;
+    margin: 0;/*centrage marges automatiques*/
+    margin-top: 5%;
+    text-align: center;/*centre les inline qu'il contient*/
+    list-style-type: none; /* Met la liste à puce sans puce */
+    background-color: #CD5C5C;
+}
+
+#navigation li {
+    background: #CD5C5C ;
+    color: #000000;
+    margin-bottom: 1px ;
+    display:inline-block;/*de list-item en hpnrizontale et en block pour pouvoir modifier la taille */
+    width:150px;
+    margin: 0;
+}
+
+#navigation li a {
+    display: block;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    margin:0;
+    padding:10px;
+}
+
+#navigation li a:hover {
+    background-color: #A52A2A;
+    color: white;
+    display: block;
+}
+
+#navigation #active {
+    background-color: #8B0000;
+    color: white;
+}
+/* --------- FIN Menu ---------*/
+
+/* --------- Body --------- */
+
 #h1
 {
     margin-left:10%;
@@ -9,11 +63,11 @@
 {
     margin-left:10%;
 }
+/* --------- FIN Body ---------*/
 
-#allTable tr:nth-child(even) {background: #FFF}
-#allTable tr:nth-child(odd) {background: #CCC}
+/* --------- Tableau ---------*/
 
-#allTable, #tableModif, #tableTarif
+#tableAffich, #tableTarif
 {
     margin: auto;
     text-align: center;
@@ -21,36 +75,40 @@
     border: 1px solid black;
 }
 
-#allTable
+#tableAffich
 {
     width: 80%;
 }
 
-#tableModif, #tableTarif
+#tableTarif
 {
     width: 30%;
 }
 
-#allTable td, #tableModif td, #tableTarif td
+#trTitre
+{
+    background: #CD5C5C;
+    border: 2px solid black;
+}
+
+th, td
+{
+    padding: 5px;
+}
+
+/* Permet d'alterner les couleurs des lignes du tableau */
+#trContenu:nth-child(even) {background: #FFF}
+#trContenu:nth-child(odd) {background-color: rgba(200, 0, 0, 0.2)}
+
+#tableAffich td, #tableModif td, #tableTarif td
 {
     //border-left: 1px solid black;
     
 }
+/* --------- FIN Tableau ---------*/
 
-#tdlistgare
-{
-    padding-left: 20px;
-    text-align: left;
-    
-}
-
-#allTr
-{
-   border: 1px solid black;
-}
-
-
-.btn_gauche
+/* --------- Bouton ---------*/
+#btn_gauche
 {
     width:100px;
     float: left;
@@ -66,6 +124,7 @@
     width: 20px;
     height: 20px;
 }
+/* --------- FIN Bouton ---------*/
 
 
 /* CSS des messages : succès, erreur etc... */
@@ -96,40 +155,14 @@
 }
 
 
-/* Menu */
-#navigation {
-    padding: 0;
-    margin:0 auto;/*centrage marges automatiques*/
-    margin-top:10%;
-    text-align:center;/*centre les inline qu'il contient*/
-    list-style-type:none;
-}
-
-#navigation li {
-    background: #fff ;
-    color: #000000;
-    border: 1px solid #600 ;
-    margin-bottom: 1px ;
-    display:inline-block;/*de list-item à inline et en block pour pouvoir modifier la taille*/
-    width:200px;
-    padding:10px;
-}
-
- 
-/* Lignes */
-/*Le css est en pause
-.lignesbtn 
-{
-    width:100px;
-    float: right;
-    margin-right:10%;
-    margin-top:1%;
-    color:black;
-    border-width:2px;
-}
-*/
-
+/* ------------ Lignes ------------ */
 #ligneTDModifier
 {
     text-align: center;
 }
+.aFiche
+{
+    color: #000;
+    text-decoration: none;
+}
+/* --------- FIN Ligne ---------*/

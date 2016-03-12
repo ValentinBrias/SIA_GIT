@@ -11,10 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css" />
     </head>
-    <body>   
-        <!--<img src='image/logo_STF.jpg' alt='Logo'>-->
+    <body> 
+            <img id="logoMenu" src='image/logo_STF.jpg' alt='Logo'>
+        
         <ul id="navigation">
-            <li><a href="MenuPrincipal.jsp">Page d'accueil</a></li>
+            <li><a id="active" href="MenuPrincipal.jsp">Page d'accueil</a></li>
             <li><a href="Servlet_STF?action=AfficherLignes">Lignes</a></li>
             <li><a href="Servlet_STF?action=AfficherGares">Gares</a></li>
             <li><a href="Servlet_STF?action=AfficherAbonnement">Abonnements</a></li>
