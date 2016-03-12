@@ -12,14 +12,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listelignes" scope="request" class="java.util.List"></jsp:useBean>
-        <title>JSP Page</title>
+        <title>Gare</title>
     </head>
     <body>
         <%@ include file="Navigation.jsp" %>
-        <h1>Creation gares</h1>
+        <h1 id="h1">Gares > Ajouter</h1>
         <form method="get" action="Servlet_STF">
             
-                <legend> Création d'une gare </legend>
                     <TABLE>
                         <tr>
                             <td Width=100px><label for="nom">Nom <span class="requis">*</span></label></td>
@@ -46,8 +45,8 @@
 
                 <input type="hidden" name="action" value="GareAjouter">
 
-                <input type="submit" value="Valider"/>
-                <input type="reset" value="Remettre à zéro"/>
+                <input id="btn_gauche" type="submit" value="Valider"/>
+                <input id="btn_gauche" type="reset" value="Remettre à zéro"/>
                 <br/>
         </form>
     </body>

@@ -52,12 +52,10 @@
         </div>
             <br>
             <br>
-            <div class ="btn_gauche">
                 <input type="hidden" name="action" value="AjouterLigne">
 
-                <input type="submit" value="Valider"/>
-                <input type="reset" value="Remettre à zéro"/>
-            </div>
+                <input id="btn_gauche" type="submit" value="Valider"/>
+                <input id="btn_gauche" type="reset" value="Remettre à zéro"/>
         </form>
     </body>
 </html>

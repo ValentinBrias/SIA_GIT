@@ -19,16 +19,21 @@
     <body>
         <%@ include file="Navigation.jsp" %>
         <h1 id="h1">Lignes > Modifier</h1>
-        <br><br>
+        <div class="msg_info">
+            * Si aucune ligne n'est sélectionnée, les lignes ne seront pas modifiés.<br>
+            Si au moins 1 ligne est sélectionnée, les anciennes lignes seront remplacées.
+        </div>
         <form method="get" action="Servlet_STF">
             <TABLE id="tableModif">
-                <tr id="allTr">
-                    <th></th><th>Données actuelles</th><th>Nouvelles données</th>
+                <tr id="trTitre">
+                    <th></th>
+                    <th>Données actuelles</th>
+                    <th>Nouvelles données</th>
                 </tr>
-                <tr>
+                <tr class="trModif">
                     <td>Numéro</td><td><%=ligne.getNumLigne()%></td><td><input type="text" name="NumLigne" placeholder='nouveau numéro'/></td>
                 </tr>
-                <tr>
+                <tr class="trModif">
                     <td>Gare départ</td><td><%=ligne.getGareDepart().getNomGare()%></td>
                     <td><select name="GareDepart">
                             <!--Liste déroulante des gares-->
@@ -38,7 +43,7 @@
                             <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                             <%}%></select></td>
                 </tr>
-                <tr>
+                <tr class="trModif">
                     <td>Gare arrivée</td><td><%=ligne.getGareArrivee().getNomGare()%></td>
                     <td><select name="GareArrivee">
                             <!--Liste déroulante des gares-->
@@ -47,10 +52,11 @@
                             <option value='<%=g.getId()%>'><%=g.getNomGare()%></option> 
                             <%}%></select></td>
                 </tr>
-                <tr><!--Liste des gares liés à la ligne-->
+                <tr class="trModif"><!--Liste des gares liés à la ligne-->
                     <% List<Gare> lesG = ligne.getLesGares();%>
-                    <td>Gares</td><td><%for (Gare g : lesG) {%><%=g.getNomGare()%><br><%}%></td> 
-                    <td id="tdlistgare">Nouvelle lignes : *<br>
+                    <td>Gares</td>
+                    <td id="tdList"><%for (Gare g : lesG) {%><%=g.getNomGare()%><br><%}%></td> 
+                    <td id="tdList">Nouvelle lignes : *<br>
                         <%List<Gare> toutesgares = listegares;
                         for (Gare g : toutesgares) {%>
                         <!--Checkbox pour toutes les gares dispos-->
@@ -59,22 +65,11 @@
                         </td>
                 </tr>
             </TABLE>
-            <br>
-            
-            <div class="text">
-                * Si aucune ligne n'est sélectionnée, les lignes ne seront pas modifiés.<br>
-                Si au moins 1 ligne est sélectionnée, les anciennes lignes seront remplacées.
-            </div>
-            
-            <br><br>
-            
             
             <!-- Bouton Enregistrer -->
-            <div class ="btn_gauche">
                 <input type="hidden" name="idligne" value="<%=ligne.getId()%>"/>
                 <input type="hidden" name="action" value="ModifierLigne"/>
-                <input type="submit" value="Enregistrer"/>
-            </div>
+                <input id="btn_enregistrer" type="submit" value="Enregistrer"/>
         </form>
                 
     </body>

@@ -20,17 +20,17 @@
         <%@ include file="Navigation.jsp" %>
 
         <h1 id="h1">Lignes</h1>
-        <br><br>
         
         <!-- Méthode de la recherche d'une ligne -->
         <div class ="text">
             
-            <form method="get" action="Servlet_STF">
-                Sélectionner une ligne 
+            <form method="get" action="Servlet_STF"> 
                 <input type="text" name="NumLigne" placeholder="Rechercher une ligne" /> 
                 <input type="hidden" name="action" value="RechercherLigne">
                 <input type="submit" value="Rechercher"/>
-                <a href="Servlet_STF?&action=LigneRafraichir"> <img id='boutonRafraichir' src='image/LogoRafraichir.png' alt='Rafraichir le tableau'></a>
+
+                    <a href="Servlet_STF?&action=LigneRafraichir"> <img id='boutonRafraichir' src='image/LogoRafraichir.png' alt='Rafraichir le tableau'></a>
+
                     <%
                         String attribut = (String) request.getAttribute("message");
                         out.println(attribut);
@@ -38,9 +38,7 @@
             </form>
         </div>
         
-        <br><br>
-        
-        
+        <br>
         <!-- Affichage de la liste de toutes les lignes -->
         <TABLE id="tableAffich">
             <tr id="trTitre">
@@ -62,19 +60,19 @@
                     <td Width=5%><%=a.getNumLigne()%></td>
                     <td Width=15%><%=a.getGareDepart().getNomGare()%></td>
                     <td Width=10%><%=a.getGareArrivee().getNomGare()%></td>
-                    <td id="tdlistgare" Width=10%><%for(Gare g:lesGa){%><li><%=g.getNomGare()%><br><%}%></li></td>
+                    <td id="tdList" Width=10%><%for(Gare g:lesGa){%><li><%=g.getNomGare()%><br><%}%></li></td>
                     <td Width=10%><%=lesGa.size()%></td>
                     <td Width=10%><a class="aFiche" href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneHoraire">Fiche horaire</a></td>
                     <td Width=10%><a class="aFiche" href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneTarif">Fiche tarifaire</a></td>
                     <td Width=15%> 
-                        <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification"><button>Modifier</button></a>
-                        <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression"><button>Supprimer</button></a>
+                        <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneModification"><button class="btn_ModSup">Modifier</button></a>
+                        <a href="Servlet_STF?IdLigne=<%=a.getId()%>&action=LigneSuppression"><button class="btn_ModSup">Supprimer</button></a>
                     </td>
                 </tr><%}%>
         </TABLE>
         
         <!-- Bouton ajouter -->
-            <a href="Servlet_STF?action=LigneAjouter"><button id="btn_gauche">Ajouter</button></a>
+        <a href="Servlet_STF?action=LigneAjouter"><button id="btn_gauche">Ajouter une ligne</button></a>
 
     </body>
 </html>

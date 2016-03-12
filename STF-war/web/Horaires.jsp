@@ -34,18 +34,19 @@
             
         %>
         </p>
-        <TABLE id="allTable">
-            <tr>
+        <TABLE id="tableAffich">
+            <tr id="trTitre">
                 <th>Gare</th>
                 <th>horaires</th>
+                <th>Sélectionner</th>
             </tr>
             <%
                 for(Gare g:lesGares){%>
-                <tr>
+                <tr id="trContenu">
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=75%><%for(Horaire h: g.GetHorairesParLigne(ligne)){%><%=heure.format(h.getDateHoraire())%> / <%}%></td>
-                    <td align='center'> <a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=CreationHoraire"><button>Ajouter</button></a></td>
-                    <td align='center'><a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=SuppressionHoraire"><button> Supprimer</button></a></td>
+                    <td><a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=CreationHoraire"><button>Ajouter</button></a>
+                        <a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=SuppressionHoraire"><button> Supprimer</button></a></td>
                     
                 </tr><%}%>
         </TABLE>

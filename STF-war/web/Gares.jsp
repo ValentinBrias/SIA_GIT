@@ -21,16 +21,12 @@
         <%@ include file="Navigation.jsp" %>
         
         <h1 id="h1">Gares</h1>
-        <br><br>
         <div class ="text">
         <%
             String attribut=(String)request.getAttribute("message");
             out.println(attribut);
         %>
         </div>
-        
-        <br><br>
-        
         
         <TABLE id="tableAffich">
             <tr id="trTitre">
@@ -47,17 +43,16 @@
                     <td Width=15%><%=g.getId()%></td>
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=15%><%=g.getAdresse()%></td>
-                    <td Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne()%> / <%}%></td>
+                    <td id="tdList" Width=15%><%for(Ligne l: g.getLesLignes()){%><%=l.getNumLigne()%> / <%}%></td>
                     <td Width=15%>
-                        <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare"><button>Modifier</button></a>
-                        <a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button> Supprimer</button></a>
+                        <a href="Servlet_STF?modif=<%=g.getId()%>&action=ModificationGare"><button class="btn_ModSup">Modifier</button></a>
+                        <a href="Servlet_STF?suppr=<%=g.getId()%>&action=SuppressionGare"><button class="btn_ModSup">Supprimer</button></a>
                     </td>
                 </tr><%}%>
         </TABLE>
         
         <!-- Bouton ajouter -->
-        <div class ="btn_gauche">
-            <a href="Servlet_STF?action=CreationGares"><button>Ajouter</button></a>
-        </div>
+        <a href="Servlet_STF?action=CreationGares"><button id="btn_gauche">Ajouter une gare</button></a>
+        
     </body>
 </html>
