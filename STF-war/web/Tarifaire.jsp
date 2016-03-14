@@ -40,9 +40,8 @@
         <br><br>
         
         <!-- Affichage de la liste de toutes les lignes -->
-        <TABLE id="tableTarif">
-
-            <tr id="allTr">
+        <TABLE id="tableAffich">
+            <tr id="trTitre">
                 <th><%=ligne.getGareDepart().getNomGare()%></th>
                 <th>Distance</th>
                 <th>Tarif</th>

@@ -18,22 +18,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="ligne" scope="request" class="Ligne"></jsp:useBean>
-        <title>Horaires</title>
-    </head>
-    <body>
+            <title>Horaires</title>
+        </head>
+        <body>
         <%@ include file="Navigation.jsp" %>
-        <h1>Horaires</h1>
-        <br><br>
+        <h1 id="h1">Horaires</h1>
         <p>
-        <%
-            String attribut=(String)request.getAttribute("message");
-            out.println(attribut);
-            
-            DateFormat heure = new SimpleDateFormat("HH:mm");
-            List<Gare> lesGares=ligne.getLesGares();
-            
-        %>
-        </p>
+        <div class ="text">
+            <%
+                String attribut = (String) request.getAttribute("message");
+                out.println(attribut);
+
+                DateFormat heure = new SimpleDateFormat("HH:mm");
+                List<Gare> lesGares = ligne.getLesGares();
+
+            %>
+        </div>
+    </p>
         <TABLE id="tableAffich">
             <tr id="trTitre">
                 <th>Gare</th>
@@ -45,8 +46,8 @@
                 <tr id="trContenu">
                     <td Width=15%><%=g.getNomGare()%></td>
                     <td Width=75%><%for(Horaire h: g.GetHorairesParLigne(ligne)){%><%=heure.format(h.getDateHoraire())%> / <%}%></td>
-                    <td><a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=CreationHoraire"><button>Ajouter</button></a>
-                        <a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=SuppressionHoraire"><button> Supprimer</button></a></td>
+                    <td><a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=CreationHoraire"><button class="btn_ModSup">Ajouter</button></a>
+                        <a href="Servlet_STF?gare=<%=g.getId()%>&ligne=<%=ligne.getId()%>&action=SuppressionHoraire"><button class="btn_ModSup">Supprimer</button></a></td>
                     
                 </tr><%}%>
         </TABLE>
