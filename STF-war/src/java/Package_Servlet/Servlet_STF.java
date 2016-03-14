@@ -49,7 +49,6 @@ public class Servlet_STF extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-          
             
             String jspClient = null;
             String act = request.getParameter("action");
