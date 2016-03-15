@@ -11,7 +11,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:useBean id="abo" scope="request" class="Abonnement"></jsp:useBean>
         <jsp:useBean id="listeabonnements" scope="request" class="java.util.List"></jsp:useBean>
         <title>Abonnement</title>
         <!-- Inclusion du menu par la jsp Navigation -->
@@ -32,16 +31,19 @@
         <br><br>
         
         <!-- Affichage de la liste de toutes les lignes -->
-        <TABLE id="tableTarif">
-
-            <tr id="allTr">
+        <TABLE id="tableAffich">
+            <tr id="trTitre">
                 <th>Nom</th>
                 <th>Remise</th>
             </tr>
-            <tr>
-                <td width="10%"><%=abo.getNomAbonnement()%></td>
-                <td width="10%"><%=abo.getTauxReduction()%></td>
-            </tr>
+            <%
+                List<Abonnement> abo=listeabonnements;
+                for(Abonnement a:abo){
+            %>
+            <tr id="trContenu">
+                <td width="10%"><%=a.getType()%></td>
+                <td width="10%"><%=a.getTauxReduction()%></td>
+            </tr><%}%>
         </TABLE>
     </body>
 </html>

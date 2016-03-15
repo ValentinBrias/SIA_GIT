@@ -7,6 +7,9 @@ package package_entite;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import static java.util.Collections.list;
+import java.util.Comparator;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -88,6 +91,7 @@ public class Gare implements Serializable {
     
         @OneToMany(mappedBy = "laGare")
     private List<DistanceGare> lesDistanceGares;
+        
     
     @OneToMany(mappedBy = "gareArrivee")
     private List<Ligne> lesLignesArrivee;

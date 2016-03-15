@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import package_entite.Abonnement;
+import package_entite.Type_Abonnement;
 
 /**
  *
@@ -29,15 +30,24 @@ public class AbonnementFacade extends AbstractFacade<Abonnement> implements Abon
     public AbonnementFacade() {
         super(Abonnement.class);
     }
+    
 
     @Override
     public List <Abonnement> RetournerAbonnement() {
         List <Abonnement> listeA;
         Abonnement g = null;
-        String txt = "SELECT g FROM Gare as g";
+        String txt = "SELECT g FROM Abonnement as g order by g.type ASC";
         Query req = getEntityManager().createQuery(txt);
         listeA = req.getResultList();
         return listeA;
+    }
+
+    @Override
+    public void CreerAbonnement(double taux, Type_Abonnement type) {
+        Abonnement abo = new Abonnement();
+        abo.setTauxReduction(taux);
+        abo.setType(type);
+        em.persist(abo);
     }
     
 }

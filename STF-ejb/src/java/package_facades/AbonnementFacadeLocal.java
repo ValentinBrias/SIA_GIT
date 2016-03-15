@@ -8,6 +8,7 @@ package package_facades;
 import java.util.List;
 import javax.ejb.Local;
 import package_entite.Abonnement;
+import package_entite.Type_Abonnement;
 
 /**
  *
@@ -31,5 +32,7 @@ public interface AbonnementFacadeLocal {
     int count();
 
     List RetournerAbonnement();
+
+    void CreerAbonnement(double taux, Type_Abonnement type);
     
 }

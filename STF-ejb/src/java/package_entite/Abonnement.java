@@ -56,43 +56,21 @@ public class Abonnement implements Serializable {
     public String toString() {
         return "package_entite.Abonnement[ id=" + id + " ]";
     }
-    
-    private String nomAbonnement;
+    private Type_Abonnement type;
 
-    /**
-     * Get the value of nomAbonnement
-     *
-     * @return the value of nomAbonnement
-     */
-    public String getNomAbonnement() {
-        return nomAbonnement;
+    public Type_Abonnement getType() {
+        return type;
     }
 
-    /**
-     * Set the value of nomAbonnement
-     *
-     * @param nomAbonnement new value of nomAbonnement
-     */
-    public void setNomAbonnement(String nomAbonnement) {
-        this.nomAbonnement = nomAbonnement;
+    public void setType(Type_Abonnement type) {
+        this.type = type;
     }
-
     private double tauxReduction;
 
-    /**
-     * Get the value of tauxReduction
-     *
-     * @return the value of tauxReduction
-     */
     public double getTauxReduction() {
         return tauxReduction;
     }
 
-    /**
-     * Set the value of tauxReduction
-     *
-     * @param tauxReduction new value of tauxReduction
-     */
     public void setTauxReduction(double tauxReduction) {
         this.tauxReduction = tauxReduction;
     }
