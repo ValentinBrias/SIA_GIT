@@ -10,12 +10,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import package_entite.Abonnement;
-import package_entite.DistanceGare;
-import package_entite.DistanceGareFacadeLocal;
 import package_entite.Gare;
 import package_entite.Horaire;
 import package_entite.Ligne;
 import package_facades.AbonnementFacadeLocal;
+import package_facades.DistanceGareFacadeLocal;
 import package_facades.GareFacadeLocal;
 import package_facades.HoraireFacadeLocal;
 import package_facades.LigneFacadeLocal;
@@ -27,9 +26,9 @@ import package_facades.LigneFacadeLocal;
 @Stateless
 public class SessionAdministrateur implements SessionAdministrateurLocal {
     @EJB
-    private AbonnementFacadeLocal abonnementFacade;
-    @EJB
     private DistanceGareFacadeLocal distanceGareFacade;
+    @EJB
+    private AbonnementFacadeLocal abonnementFacade;
     @EJB
     private LigneFacadeLocal ligneFacade;
     @EJB
@@ -132,33 +131,6 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     public List<Horaire> RechercherHoraireParLigne(Ligne ligne) {
         List<Horaire> list = horaireFacade.RechercherHoraireParLigne(ligne);
         return list;
-    }
-
-    @Override
-    public void CreerDistance(double nbkm, Ligne ligne, Gare gare) {
-        distanceGareFacade.AjouterDistance(nbkm, ligne, gare);
-    }
-
-    @Override
-    public void ModifierDistance(double nouvelledistance, DistanceGare distance) {
-        distanceGareFacade.ModifierDistance(nouvelledistance, distance);
-    }
-
-    @Override
-    public void SupprimerDistance(long id) {
-        distanceGareFacade.SupprimerDistance(id);
-    }
-
-    @Override
-    public DistanceGare RechercherDistanceParId(long id) {
-        DistanceGare d = distanceGareFacade.RechercherDistanceParID(id);
-        return d;
-    }
-
-    @Override
-    public List <DistanceGare> RetournerDistance() {
-        List <DistanceGare> listeD = distanceGareFacade.RetournerDistance();
-        return listeD;
     }
 
     @Override

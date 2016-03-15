@@ -8,14 +8,14 @@ package package_facades;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import package_entite.Mensuel;
+import package_entite.DistanceGare;
 
 /**
  *
- * @author 3092790
+ * @author 3099709
  */
 @Stateless
-public class MensuelFacade extends AbstractFacade<Mensuel> implements MensuelFacadeLocal {
+public class DistanceGareFacade extends AbstractFacade<DistanceGare> implements DistanceGareFacadeLocal {
     @PersistenceContext(unitName = "STF-ejbPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class MensuelFacade extends AbstractFacade<Mensuel> implements MensuelFac
         return em;
     }
 
-    public MensuelFacade() {
-        super(Mensuel.class);
+    public DistanceGareFacade() {
+        super(DistanceGare.class);
     }
     
 }

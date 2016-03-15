@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package package_entite;
+package package_facades;
 
 import java.util.List;
 import javax.ejb.Local;
+import package_entite.DistanceGare;
 
 /**
  *
- * @author vanna
+ * @author 3099709
  */
 @Local
 public interface DistanceGareFacadeLocal {
@@ -28,15 +29,5 @@ public interface DistanceGareFacadeLocal {
     List<DistanceGare> findRange(int[] range);
 
     int count();
-
-    void AjouterDistance(double nbkm, Ligne ligne, Gare gare);
-
-    DistanceGare RechercherDistanceParID(long id);
-
-    void ModifierDistance(double nouvelledistance, DistanceGare distance);
-
-    void SupprimerDistance(long id);
-
-    List RetournerDistance();
     
 }

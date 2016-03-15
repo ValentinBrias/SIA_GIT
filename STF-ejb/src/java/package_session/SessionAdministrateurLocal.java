@@ -8,7 +8,6 @@ package package_session;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
-import package_entite.DistanceGare;
 import package_entite.Gare;
 import package_entite.Horaire;
 import package_entite.Ligne;
@@ -53,16 +52,6 @@ public interface SessionAdministrateurLocal {
     Ligne RechercherLigneParNum(int num);
 
     List<Horaire> RechercherHoraireParLigne(Ligne ligne);
-
-    void CreerDistance(double nbkm, Ligne ligne, Gare gare);
-
-    void ModifierDistance(double nouvelledistance, DistanceGare distance);
-
-    void SupprimerDistance(long id);
-
-    DistanceGare RechercherDistanceParId(long id);
-
-    List RetournerDistance();
 
     List RetournerAbonnement();
     

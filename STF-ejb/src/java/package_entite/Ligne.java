@@ -24,16 +24,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Ligne implements Serializable {
-    @OneToMany(mappedBy = "laLigne")
-    private List<DistanceGare> lesDistanceGares;
-
-    public List<DistanceGare> getLesDistanceGares() {
-        return lesDistanceGares;
-    }
-
-    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
-        this.lesDistanceGares = lesDistanceGares;
-    }
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -75,20 +66,10 @@ public class Ligne implements Serializable {
     @Column (unique = true)
     private int numLigne;
 
-    /**
-     * Get the value of numLigne
-     *
-     * @return the value of numLigne
-     */
     public int getNumLigne() {
         return numLigne;
     }
 
-    /**
-     * Set the value of numLigne
-     *
-     * @param numLigne new value of numLigne
-     */
     public void setNumLigne(int numLigne) {
         this.numLigne = numLigne;
     }
@@ -96,11 +77,6 @@ public class Ligne implements Serializable {
     @ManyToOne
     private Gare gareDepart; //départ de la ligne
 
-    /**
-     * Get the value of gareA
-     *
-     * @return the value of gareA
-     */
     public Gare getGareDepart() {
         return gareDepart;
     }
@@ -125,62 +101,32 @@ public class Ligne implements Serializable {
 
     private int nbGare;
 
-    /**
-     * Get the value of nbGare
-     *
-     * @return the value of nbGare
-     */
     public int getNbGare() {
         return nbGare;
     }
 
-    /**
-     * Set the value of nbGare
-     *
-     * @param nbGare new value of nbGare
-     */
     public void setNbGare(int nbGare) {
         this.nbGare = nbGare;
     }
 
-    @ManyToMany
-    private List<Train> lesTrains;
+    @OneToMany(mappedBy = "laLigne")
+    private List<DistanceGare> lesDistanceGares;
 
-    /**
-     * Get the value of lesTrains
-     *
-     * @return the value of lesTrains
-     */
-    public List<Train> getLesTrains() {
-        return lesTrains;
+    public List<DistanceGare> getLesDistanceGares() {
+        return lesDistanceGares;
     }
 
-    /**
-     * Set the value of lesTrains
-     *
-     * @param lesTrains new value of lesTrains
-     */
-    public void setLesTrains(List<Train> lesTrains) {
-        this.lesTrains = lesTrains;
+    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
+        this.lesDistanceGares = lesDistanceGares;
     }
 
     @OneToMany(mappedBy = "laLigne")
     private List<Horaire> lesHoraires;
 
-    /**
-     * Get the value of lesHoraires
-     *
-     * @return the value of lesHoraires
-     */
     public List<Horaire> getLesHoraires() {
         return lesHoraires;
     }
 
-    /**
-     * Set the value of lesHoraires
-     *
-     * @param lesHoraires new value of lesHoraires
-     */
     public void setLesHoraires(List<Horaire> lesHoraires) {
         this.lesHoraires = lesHoraires;
     }
@@ -188,20 +134,10 @@ public class Ligne implements Serializable {
     @ManyToMany
     private List<Gare> lesGares;
 
-    /**
-     * Get the value of lesGares
-     *
-     * @return the value of lesGares
-     */
     public List<Gare> getLesGares() {
         return lesGares;
     }
 
-    /**
-     * Set the value of lesGares
-     *
-     * @param lesGares new value of lesGares
-     */
     public void setLesGares(List<Gare> lesGares) {
         this.lesGares = lesGares;
     }

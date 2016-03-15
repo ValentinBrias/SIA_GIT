@@ -18,8 +18,7 @@ import javax.persistence.InheritanceType;
  * @author 3092790
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Abonnement extends Type_Paiement implements Serializable {
+public class Abonnement implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -25,93 +25,7 @@ import javax.persistence.Query;
  */
 @Entity
 public class Gare implements Serializable {
-    @OneToMany(mappedBy = "laGare")
-    private List<DistanceGare> lesDistanceGares;
-    
-    @OneToMany(mappedBy = "gareArrivee")
-    private List<Ligne> lesLignesArrivee;
 
-    public List<DistanceGare> getLesDistanceGares() {
-        return lesDistanceGares;
-    }
-    
-    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
-        this.lesDistanceGares = lesDistanceGares;
-    }
-
-    public List<Ligne> getLesLignesArrivee() {
-        return lesLignesArrivee;
-    }
-    @OneToMany(mappedBy = "laGare")
-    private List<Horaire> lesHoraires;
-
-    /**
-     * Get the value of lesHoraires
-     *
-     * @return the value of lesHoraires
-     */
-    public List<Horaire> getLesHoraires() {
-        return lesHoraires;
-    }
-
-    /**
-     * Set the value of lesHoraires
-     *
-     * @param lesHoraires new value of lesHoraires
-     */
-    public void setLesHoraires(List<Horaire> lesHoraires) {
-        this.lesHoraires = lesHoraires;
-    }
-
-
-    public void setLesLignesArrivee(List<Ligne> lesLignesArrivee) {
-        this.lesLignesArrivee = lesLignesArrivee;
-    }
-
-    public List<Ligne> getLesLignesDepart() {
-        return lesLignesDepart;
-    }
-
-    public void setLesLignesDepart(List<Ligne> lesLignesDepart) {
-        this.lesLignesDepart = lesLignesDepart;
-    }
-    
-    @OneToMany(mappedBy = "gareDepart")
-    private List<Ligne> lesLignesDepart;
-    @OneToMany(mappedBy = "gareArrivee")
-    private List<Trajet> lesTrajetsArrivee;
-
-    public List<Trajet> getLesTrajetsArrivee() {
-        return lesTrajetsArrivee;
-    }
-
-    public void setLesTrajetsArrivee(List<Trajet> lesTrajetsArrivee) {
-        this.lesTrajetsArrivee = lesTrajetsArrivee;
-    }
-
-    public List<Trajet> getLesTrajetsDepart() {
-        return lesTrajetsDepart;
-    }
-
-    public void setLesTrajetsDepart(List<Trajet> lesTrajetsDepart) {
-        this.lesTrajetsDepart = lesTrajetsDepart;
-    }
-    @OneToMany(mappedBy = "gareDepart")
-    private List<Trajet> lesTrajetsDepart;
-    
-    @ManyToMany(mappedBy = "lesGares")
-    @JoinTable(name="LIGNE_GARE", 
-    joinColumns=@JoinColumn(name="LESGARES_ID"),
-    inverseJoinColumns=@JoinColumn(name="LESLIGNES_ID"))
-    private List<Ligne> lesLignes;
-
-    public List<Ligne> getLesLignes() {
-        return lesLignes;
-    }
-
-    public void setLesLignes(List<Ligne> lesLignes) {
-        this.lesLignes = lesLignes;
-    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -152,20 +66,10 @@ public class Gare implements Serializable {
     
     private String nomGare;
 
-    /**
-     * Get the value of nomGare
-     *
-     * @return the value of nomGare
-     */
     public String getNomGare() {
         return nomGare;
     }
 
-    /**
-     * Set the value of nomGare
-     *
-     * @param nomGare new value of nomGare
-     */
     public void setNomGare(String nomGare) {
         this.nomGare = nomGare;
     }
@@ -180,6 +84,63 @@ public class Gare implements Serializable {
     
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+    
+        @OneToMany(mappedBy = "laGare")
+    private List<DistanceGare> lesDistanceGares;
+    
+    @OneToMany(mappedBy = "gareArrivee")
+    private List<Ligne> lesLignesArrivee;
+
+    public List<DistanceGare> getLesDistanceGares() {
+        return lesDistanceGares;
+    }
+    
+    public void setLesDistanceGares(List<DistanceGare> lesDistanceGares) {
+        this.lesDistanceGares = lesDistanceGares;
+    }
+
+    public List<Ligne> getLesLignesArrivee() {
+        return lesLignesArrivee;
+    }
+    @OneToMany(mappedBy = "laGare")
+    private List<Horaire> lesHoraires;
+
+    public List<Horaire> getLesHoraires() {
+        return lesHoraires;
+    }
+    public void setLesHoraires(List<Horaire> lesHoraires) {
+        this.lesHoraires = lesHoraires;
+    }
+
+
+    public void setLesLignesArrivee(List<Ligne> lesLignesArrivee) {
+        this.lesLignesArrivee = lesLignesArrivee;
+    }
+
+    public List<Ligne> getLesLignesDepart() {
+        return lesLignesDepart;
+    }
+
+    public void setLesLignesDepart(List<Ligne> lesLignesDepart) {
+        this.lesLignesDepart = lesLignesDepart;
+    }
+    
+    @OneToMany(mappedBy = "gareDepart")
+    private List<Ligne> lesLignesDepart;
+
+    @ManyToMany(mappedBy = "lesGares")
+    @JoinTable(name="LIGNE_GARE", 
+    joinColumns=@JoinColumn(name="LESGARES_ID"),
+    inverseJoinColumns=@JoinColumn(name="LESLIGNES_ID"))
+    private List<Ligne> lesLignes;
+
+    public List<Ligne> getLesLignes() {
+        return lesLignes;
+    }
+
+    public void setLesLignes(List<Ligne> lesLignes) {
+        this.lesLignes = lesLignes;
     }
 
     public List<Horaire> GetHorairesParLigne (Ligne ligne){
