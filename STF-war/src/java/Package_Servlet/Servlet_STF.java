@@ -376,7 +376,10 @@ public class Servlet_STF extends HttpServlet {
             Gare elm = sessionAdministrateur.RechercherGareParId(idga);
             listeG.add(gad);
             listeG.add(elm);
-            sessionAdministrateur.CreerLigne(num, gad, elm, listeG);
+            Ligne l = sessionAdministrateur.CreerLigne(num, gad, elm, listeG);
+            for (Gare gare:listeG){
+                sessionAdministrateur.CreerDistance(gare,l,0);
+            }
             message = "<div class='msg_success'>La ligne est créée avec succès !</div>";
             i = 1;
         }

@@ -25,7 +25,7 @@ public interface SessionAdministrateurLocal {
 
     void ModifierGare(long id, String nom, String adresse, List<Ligne> list);
 
-    void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, List <Gare> liste);
+    Ligne CreerLigne(int num, Gare gareDepart, Gare gareArrivee, List <Gare> liste);
 
     void SupprimerLigne(long id);
 
@@ -54,5 +54,7 @@ public interface SessionAdministrateurLocal {
     List<Horaire> RechercherHoraireParLigne(Ligne ligne);
 
     List RetournerAbonnement();
+
+    void CreerDistance(Gare gare, Ligne ligne, double distance);
     
 }

@@ -8,6 +8,8 @@ package package_facades;
 import java.util.List;
 import javax.ejb.Local;
 import package_entite.DistanceGare;
+import package_entite.Gare;
+import package_entite.Ligne;
 
 /**
  *
@@ -29,5 +31,7 @@ public interface DistanceGareFacadeLocal {
     List<DistanceGare> findRange(int[] range);
 
     int count();
+
+    void CreerDistance(Gare gare, Ligne ligne, double distance);
     
 }

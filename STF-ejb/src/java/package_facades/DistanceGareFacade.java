@@ -9,6 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import package_entite.DistanceGare;
+import package_entite.Gare;
+import package_entite.Ligne;
 
 /**
  *
@@ -26,6 +28,15 @@ public class DistanceGareFacade extends AbstractFacade<DistanceGare> implements 
 
     public DistanceGareFacade() {
         super(DistanceGare.class);
+    }
+
+    @Override
+    public void CreerDistance(Gare gare, Ligne ligne, double distance) {
+        DistanceGare d = new DistanceGare();
+        d.setLaGare(gare);
+        d.setLaLigne(ligne);
+        d.setDistanceGare(distance);
+        em.persist(d);
     }
     
 }

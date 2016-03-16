@@ -56,8 +56,9 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     }
 
     @Override
-    public void CreerLigne(int num, Gare gareDepart, Gare gareArrivee, List <Gare> liste) {
-        ligneFacade.CreerLigne(num, gareDepart, gareArrivee, liste);
+    public Ligne CreerLigne(int num, Gare gareDepart, Gare gareArrivee, List <Gare> liste) {
+        return ligneFacade.CreerLigne(num, gareDepart, gareArrivee, liste);
+        
     }
 
     @Override
@@ -137,6 +138,11 @@ public class SessionAdministrateur implements SessionAdministrateurLocal {
     public List<Abonnement> RetournerAbonnement() {
         List<Abonnement> listeA = abonnementFacade.RetournerAbonnement();
         return listeA;
+    }
+
+    @Override
+    public void CreerDistance(Gare gare, Ligne ligne, double distance) {
+        distanceGareFacade.CreerDistance(gare, ligne, distance);
     }
     
     
