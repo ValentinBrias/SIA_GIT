@@ -52,26 +52,22 @@ public class Servlet_STF extends HttpServlet {
             String jspClient = null;
             String act = request.getParameter("action");
             if ((act == null) || (act.equals("null"))) {
-                jspClient = "/MenuPrincipal.jsp";
-                //jspClient = "/Authentification.jsp";
+                jspClient = "/Authentification.jsp";
+                request.setAttribute("message", "");
             }
-            else if (act.equals("MenuPrincipal")) {
-                jspClient = "/MenuPrincipal.jsp";
-                //request.setAttribute("message", "");
-            }    
-            /* else if (act.equals("MenuAuthentifier")) {
+            else if (act.equals("MenuAuthentifier")) {
                 int i;
                 i = doActionAuthentifier(request, response);
                 if (i == 1) {
-                    jspClient = "/MenuCouturier.jsp";
+                    jspClient = "/MenuPrincipal.jsp";
                 } else if (i == 2) {
-                    jspClient = "/MenuMannequin.jsp";
-                } else if (i == 3) {
-                    jspClient = "/MenuOrganisateur.jsp";
-                } else if (i == 4) {
-                    jspClient = "/Authentifier.jsp";
+                    jspClient = "/Authentification.jsp";
                 }
-            */ 
+            }
+            else if (act.equals("MenuPrincipal")) {
+                jspClient = "/MenuPrincipal.jsp";
+                request.setAttribute("message", "");
+            }    
             
             else if (act.equals("AfficherLignes")) {
                 jspClient = "/Lignes.jsp";
@@ -222,45 +218,26 @@ public class Servlet_STF extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-/*
+
     protected int doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         String message;
         int i = 0;
-
-        HttpSession session = request.getSession();
         
         if (login.trim().isEmpty() || password.trim().isEmpty()) {
-                message = "<font color='red'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</font>";
-                request.setAttribute("message", message);
-                i=4;
-        } else {
-            Personne p = null;
-            p = sessionPersonne.AuthentifierPersonne(login, password);
-            if (p == null) { //AuthentifierPersonne retourne null si la recherche de login/mdp ne donne aucun résultat
-                Organisateur o = null; //Un organisateur n'est pas une personne: pas d'héritage. 2 méthodes d'authentifiation différentes
-                o = sessionPersonne.AuthentifierOrganisateur(login, password); 
-
-                if (p==null && o==null){
-                    message = "<font color='red'>Erreur - Login ou mot de passe incorrect</font>";
-                    request.setAttribute("message", message);
-                    i=4; //si i==4, jsp = /Authentifier.jsp
-                } else if(o!=null){
-                    i = 3; //si i==3, jsp = /MenuOrgansiateur.jsp
-                    session.setAttribute("utilisateur", o);
-                }
-
-            } else if (p instanceof Couturier) {
-                i = 1; //si i==1, jsp = /MenuCouturier.jsp
-                session.setAttribute("utilisateur", p);
-            } else if (p instanceof Mannequin) {
-                i = 2; //si i==2, jsp = /MenuMannequin.jsp
-                session.setAttribute("utilisateur", p);
-            }
-        } 
+            message = "<div class='msg_error'>Erreur - Vous n'avez pas rempli tous les champs obligatoires.</div>";
+            request.setAttribute("message", message);
+            i = 2;
+        } else if (!login.equals("admin") || !password.equals("admin")) {
+            message = "<div class='msg_error'>Erreur - Login ou Mot de passe incorrect</div>";
+            request.setAttribute("message", message);
+            i = 2;
+        } else if (login.equals("admin") && password.equals("admin")) {
+            i = 1;
+        }
         return i;
-    }*/
+    }
     
     protected void doActionCreationGare(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nom = request.getParameter("nom");
