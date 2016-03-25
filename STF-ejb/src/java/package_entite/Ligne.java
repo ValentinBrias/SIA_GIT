@@ -7,6 +7,7 @@ package package_entite;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -109,7 +110,7 @@ public class Ligne implements Serializable {
         this.nbGare = nbGare;
     }
 
-    @OneToMany(mappedBy = "laLigne")
+    @OneToMany(mappedBy = "laLigne" , cascade = CascadeType.REMOVE)
     private List<DistanceGare> lesDistanceGares;
 
     public List<DistanceGare> getLesDistanceGares() {
